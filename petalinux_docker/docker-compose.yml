@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  petalinux_container:
+    image: peta_image
+    container_name: peta_container
+    volumes:
+      - /media/chustillo/Macaco/projects:/home/chustillo/projects  # Monta el disco duro en /datos dentro del contenedor
+    tty: true  # Mantiene el contenedor activo
+

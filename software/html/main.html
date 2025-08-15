@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ethernet Frame Generator/Analyzer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        font-family: sans-serif;
+      }
+
+      body {
+        background-image: url('https://cadenaser.com/resizer/v2/IFLKT52ZCPT3DHA2JAJZ4EBGMY.jpg?auth=d9b3ad3a8b4a7ade60aad107d1b75f862f2cc92b70d1084f286c85fe3a720ed0');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .navbar {
+        background-color: #000;
+        padding: 5px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 15px;
+      }
+      
+      .navbar button {
+        background: none;
+        border: 1px solid white;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background 0.3s;
+      }
+      .navbar button.activo {
+        background-color: white;
+        color: black;
+        border-color: black;
+      }
+      .navbar button:hover {
+        background: white;
+        color: black;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      .contenido {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .caja {
+        background-color: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        width: 1200px;
+        box-sizing: border-box;
+      }
+
+      .caja h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form-columns {
+        display: flex;
+        gap: 20px;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .column {
+        flex: 1;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        /* separador vertical excepto el último */
+        border-right: 1px solid #ddd;
+      }
+
+      .column:last-child {
+        border-right: none;
+      }
+
+      label {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select {
+        margin-top: 5px;
+        padding: 8px;
+        font-size: 1em;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        color: black;
+        background-color: white;
+      }
+
+      button[type="postConfig"] {
+        margin: 30px auto 0 auto; /* top auto bottom auto */
+        display: block;
+        width: 25%;
+        padding: 12px;
+        font-size: 1.1em;
+        border-radius: 10px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+
+      button[type="postConfig"]:hover {
+        background-color: #0056b3;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="nav-buttons">
+        <button class="activo" data-contenido="config">Configuración</button>
+        <button data-contenido="stats">Estadísticas</button>
+        <button data-contenido="monitor">Monitor de tráfico</button>
+      </div>
+      <img src="images/ugrlogo.png" alt="Universidad de Granada" class="logo">
+    </div>
+    <div class="contenido" id="contenidoCaja">
+      <div class="caja">
+        <form>
+          <div class="form-columns">
+            <div class="column">
+              <h2>Canal 1</h2>
+
+              <!-- <label for="enable_1" style="display: inline-block;">Enable: </label>
+              <input type="checkbox" id="enable_1" name="enable_1" value="1" style="display: inline-block;"> -->
+              <label><input type="checkbox" id="enable_1" name="enable_1" value="1" checked> Enable</label>
+              <label><input type="checkbox" id="loopback_1" name="loopback_1" value="1"> Loopback </label>
+              
+              <label for="dest_mac_1">MAC de destino 1:</label>
+              <input type="text" id="dest_mac_1" name="dest_mac_1" value="FF:FF:FF:FF:FF:FF" />
+
+              <label for="source_mac_1">Mac de origen 1:</label>
+              <input type="text" id="source_mac_1" name="source_mac_1" value="CA:FE:BA:BE:FE:CA" />
+
+              <label for="length_1">Longitud de paquete 1:</label>
+              <input type="number" id="length_1" name="length_1" placeholder="64" min="64" max="1500"/>
+
+              <label for="mode_1">Modo de generación 1:</label>
+              <select id="mode_1" name="mode_1">
+                <option value="0">Continuo</option>
+                <option value="1">Número de paquetes</option>
+                <option value="2">Número de bytes</option>
+                <option value="3">Ráfaga</option>
+              </select>
+              <div id="pckt_num_1-param" style="display: none;">
+                <label for="pckt_num_1">Cantidad de paquetes:</label>
+                <input type="number" id="pckt_num_1" name="pckt_num_1"  min="0" max="4294967295"/>
+              </div>
+              <div id="byte_num_1-param" style="display: none;">
+                <label for="byte_num_1">Cantidad de bytes:</label>
+                <input type="number" id="byte_num_1" name="byte_num_1"  min="0" max="4294967295"/>
+              </div>
+              <div id="burst_1-param" style="display: none;">
+                <label for="burst_pckts_1">Paquetes por ráfaga:</label>
+                <input type="number" id="burst_pckts_1" name="burst_pckts_1"  min="0" max="65535"/>
+                <br>
+                <label for="burst_cycles_betw_pckts_1">Ciclos entre paquetes:</label>
+                <input type="number" id="burst_cycles_betw_pckts_1" name="burst_cycles_betw_pckts_1"  min="0" max="65535"/>
+              </div>
+
+              <label for="payload_1">Payload pattern 1:</label>
+              <input type="text" id="payload_1" name="payload_1" value="CAFEDEAD" />
+
+            </div>
+
+            <div class="column">
+                <h2>Canal 2</h2>
+
+              <label><input type="checkbox" id="enable_2" name="enable_2" value="1" checked> Enable</label>
+              <label><input type="checkbox" id="loopback_2" name="loopback_2" value="1"> Loopback </label>
+
+              <label for="dest_mac_2">MAC de destino 2:</label>
+              <input type="text" id="dest_mac_2" name="dest_mac_2" value="FF:FF:FF:FF:FF:FF" />
+
+              <label for="source_mac_2">Mac de origen 2:</label>
+              <input type="text" id="source_mac_2" name="source_mac_2" value="CA:FE:BA:BE:FE:CA" />
+
+              <label for="length_2">Longitud de paquete 2:</label>
+              <input type="number" id="length_2" name="length_2" placeholder="64" min="64" max="1500"/>
+
+              <label for="mode_2">Modo de generación 2:</label>
+              <select id="mode_2" name="mode_2">
+                <option value="0">Continuo</option>
+                <option value="1">Número de paquetes</option>
+                <option value="2">Número de bytes</option>
+                <option value="3">Ráfaga</option>
+                <!-- <option value="4">Exponencial decreciente</option> -->
+              </select>
+              <div id="pckt_num_2-param" style="display: none;">
+                <label for="pckt_num_2">Cantidad de paquetes:</label>
+                <input type="number" id="pckt_num_2" name="pckt_num_2"  min="0" max="4294967295"/>
+              </div>
+              <div id="byte_num_2-param" style="display: none;">
+                <label for="byte_num_2">Cantidad de bytes:</label>
+                <input type="number" id="byte_num_2" name="byte_num_2"  min="0" max="4294967295"/>
+              </div>
+              <div id="burst_2-param" style="display: none;">
+                <label for="burst_pckts_2">Paquetes por ráfaga:</label>
+                <input type="number" id="burst_pckts_2" name="burst_pckts_2"  min="0" max="65535"/>
+                <br>
+                <label for="burst_cycles_betw_pckts_2">Ciclos entre paquetes:</label>
+                <input type="number" id="burst_cycles_betw_pckts_2" name="burst_cycles_betw_pckts_2"  min="0" max="65535"/>
+              </div>
+
+              <label for="payload_2">Payload pattern 2:</label>
+              <input type="text" id="payload_2" name="payload_2" value="CAFEDEAD" />
+            </div>
+
+            <div class="column">
+                <h2>Canal 3</h2>
+              
+              <label><input type="checkbox" id="enable_3" name="enable_3" value="1" checked> Enable</label>
+              <label><input type="checkbox" id="loopback_3" name="loopback_3" value="1"> Loopback </label>
+              
+              <label for="dest_mac_3">MAC de destino 3:</label>
+              <input type="text" id="dest_mac_3" name="dest_mac_3" value="FF:FF:FF:FF:FF:FF" />
+
+              <label for="source_mac_3">Mac de origen 3:</label>
+              <input type="text" id="source_mac_3" name="source_mac_3" value="CA:FE:BA:BE:FE:CA" />
+
+              <label for="length_3">Longitud de paquete 3:</label>
+              <input type="number" id="length_3" name="length_3" placeholder="64" min="64" max="1500"/>
+
+              <label for="mode_3">Modo de generación 3:</label>
+              <select id="mode_3" name="mode_3">
+                <option value="0">Continuo</option>
+                <option value="1">Número de paquetes</option>
+                <option value="2">Número de bytes</option>
+                <option value="3">Ráfaga</option>
+                <!-- <option value="4">Exponencial decreciente</option> -->
+              </select>
+              <div id="pckt_num_3-param" style="display: none;">
+                <label for="pckt_num_3">Cantidad de paquetes:</label>
+                <input type="number" id="pckt_num_3" name="pckt_num_3"  min="0" max="4294967295"/>
+              </div>
+              <div id="byte_num_3-param" style="display: none;">
+                <label for="byte_num_3">Cantidad de bytes:</label>
+                <input type="number" id="byte_num_3" name="byte_num_3"  min="0" max="4294967295"/>
+              </div>
+              <div id="burst_3-param" style="display: none;">
+                <label for="burst_pckts_3">Paquetes por ráfaga:</label>
+                <input type="number" id="burst_pckts_3" name="burst_pckts_3"  min="0" max="65535"/>
+                <br>
+                <label for="burst_cycles_betw_pckts_3">Ciclos entre paquetes:</label>
+                <input type="number" id="burst_cycles_betw_pckts_3" name="burst_cycles_betw_pckts_3"  min="0" max="65535"/>
+              </div>
+
+              <label for="payload_3">Payload pattern 3:</label>
+              <input type="text" id="payload_3" name="payload_3" value="CAFEDEAD" />
+            </div>
+
+            <div class="column">
+                <h2>Canal 4</h2>
+
+              <label><input type="checkbox" id="enable_4" name="enable_4" value="1" checked> Enable</label>
+              <label><input type="checkbox" id="loopback_4" name="loopback_4" value="1"> Loopback </label>
+
+              <label for="dest_mac_4">MAC de destino 4:</label>
+              <input type="text" id="dest_mac_4" name="dest_mac_4" value="FF:FF:FF:FF:FF:FF" />
+
+              <label for="source_mac_4">Mac de origen 4:</label>
+              <input type="text" id="source_mac_4" name="source_mac_4" value="CA:FE:BA:BE:FE:CA" />
+
+              <label for="length_4">Longitud de paquete 4:</label>
+              <input type="number" id="length_4" name="length_4" placeholder="64" min="64" max="1500"/>
+
+              <label for="mode_4">Modo de generación 4:</label>
+              <select id="mode_4" name="mode_4">
+                <option value="0">Continuo</option>
+                <option value="1">Número de paquetes</option>
+                <option value="2">Número de bytes</option>
+                <option value="3">Ráfaga</option>
+                <!-- <option value="4">Exponencial decreciente</option> -->
+              </select>
+              <div id="pckt_num_4-param" style="display: none;">
+                <label for="pckt_num_4">Cantidad de paquetes:</label>
+                <input type="number" id="pckt_num_4" name="pckt_num_4"  min="0" max="4294967295"/>
+              </div>
+              <div id="byte_num_4-param" style="display: none;">
+                <label for="byte_num_4">Cantidad de bytes:</label>
+                <input type="number" id="byte_num_4" name="byte_num_4"  min="0" max="4294967295"/>
+              </div>
+              <div id="burst_4-param" style="display: none;">
+                <label for="burst_pckts_4">Paquetes por ráfaga:</label>
+                <input type="number" id="burst_pckts_4" name="burst_pckts_4"  min="0" max="65535"/>
+                <br>
+                <label for="burst_cycles_betw_pckts_4">Ciclos entre paquetes:</label>
+                <input type="number" id="burst_cycles_betw_pckts_4" name="burst_cycles_betw_pckts_4"  min="0" max="65535"/>
+              </div>
+
+              <label for="payload_4">Payload pattern 4:</label>
+              <input type="text" id="payload_4" name="payload_4" value="CAFEDEAD" />
+            </div>
+          </div>
+
+          <button type="postConfig" id="sendConfig">Enviar</button>
+        </form>
+        <button type="postConfig" id="enable_traffic">Activar tráfico</button>
+      </div>
+    </div>
+    <script>
+      // Seleccionamos todos los botones dentro del navbar
+      const botones = document.querySelectorAll('.navbar button');
+      const contenidoCaja = document.getElementById('contenidoCaja');
+
+      botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+          botones.forEach(b => b.classList.remove('activo'));
+          boton.classList.add('activo');
+          const clave = boton.getAttribute('data-contenido');
+          if (contenidos[clave]) {
+            contenidoCaja.innerHTML = `<div class="caja">${contenidos[clave]}</div>`;
+          }
+        });
+      });
+
+    
+      // Contenidos para cada sección
+      const contenidos = {
+        config: `...`, // Dejar vacío o implementar según necesidad
+        stats: `<h2>Sobre mí</h2><p>Aquí puedes poner información sobre ti o tu organización.</p>`,
+        monitor: `<h2>Proyectos</h2><p>Mira algunos de mis proyectos destacados aquí.</p>`,
+      };
+
+      boton_trafico = document.getElementById('enable_traffic');
+      boton_trafico.addEventListener('click', function(event){
+        fetch('/enable_traffic', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+      });
+      
+      generetanion_1 = document.getElementById('mode_1');
+      generetanion_1.addEventListener('change', function(event){
+
+        console.log("Form value: "+document.getElementById('mode_1').value);
+
+        document.getElementById('pckt_num_1-param').style.display = 'none';
+        document.getElementById('byte_num_1-param').style.display = 'none';
+        document.getElementById('burst_1-param').style.display = 'none';
+
+        mode = document.getElementById('mode_1').value;
+
+        switch(mode){
+          case "1":
+            document.getElementById('pckt_num_1-param').style.display = 'block';
+            break;
+          case "2":
+            document.getElementById('byte_num_1-param').style.display = 'block';
+            break;
+          case "3":
+            document.getElementById('burst_1-param').style.display = 'block';
+            break;
+        }
+      });
+
+      generetanion_2 = document.getElementById('mode_2');
+      generetanion_2.addEventListener('change', function(event){
+
+        console.log("Form value: "+document.getElementById('mode_2').value);
+
+        document.getElementById('pckt_num_2-param').style.display = 'none';
+        document.getElementById('byte_num_2-param').style.display = 'none';
+        document.getElementById('burst_2-param').style.display = 'none';
+
+        mode = document.getElementById('mode_2').value;
+
+        switch(mode){
+          case "1":
+            document.getElementById('pckt_num_2-param').style.display = 'block';
+            break;
+          case "2":
+            document.getElementById('byte_num_2-param').style.display = 'block';
+            break;
+          case "3":
+            document.getElementById('burst_2-param').style.display = 'block';
+            break;
+        }
+      });
+
+      generetanion_3 = document.getElementById('mode_3');
+      generetanion_3.addEventListener('change', function(event){
+
+        console.log("Form value: "+document.getElementById('mode_3').value);
+
+        document.getElementById('pckt_num_3-param').style.display = 'none';
+        document.getElementById('byte_num_3-param').style.display = 'none';
+        document.getElementById('burst_3-param').style.display = 'none';
+
+        mode = document.getElementById('mode_3').value;
+
+        switch(mode){
+          case "1":
+            document.getElementById('pckt_num_3-param').style.display = 'block';
+            break;
+          case "2":
+            document.getElementById('byte_num_3-param').style.display = 'block';
+            break;
+          case "3":
+            document.getElementById('burst_3-param').style.display = 'block';
+            break;
+        }
+      });
+
+      generetanion_4 = document.getElementById('mode_4');
+      generetanion_4.addEventListener('change', function(event){
+
+        console.log("Form value: "+document.getElementById('mode_4').value);
+
+        document.getElementById('pckt_num_4-param').style.display = 'none';
+        document.getElementById('byte_num_4-param').style.display = 'none';
+        document.getElementById('burst_4-param').style.display = 'none';
+
+        mode = document.getElementById('mode_4').value;
+
+        switch(mode){
+          case "1":
+            document.getElementById('pckt_num_4-param').style.display = 'block';
+            break;
+          case "2":
+            document.getElementById('byte_num_4-param').style.display = 'block';
+            break;
+          case "3":
+            document.getElementById('burst_4-param').style.display = 'block';
+            break;
+        }
+      });
+      
+      
+      
+      // Enviar la configuración al servidor
+      document.querySelector('form').addEventListener('submit', function(event){
+        event.preventDefault()
+
+        const modes = ["mode_1", "mode_2", "mode_3", "mode_4"];
+        gen_params = [];
+        
+        for(let i = 0; i<4; i++){
+
+          mode = document.getElementById(modes[i]).value;
+
+          switch(mode){
+            case "0":
+              gen_params[2*i] = '0';
+              gen_params[2*i+1] = '0';
+              break;
+            case "1":
+              gen_params[2*i] = document.getElementById('pckt_num_'+(i+1).toString()).value;
+              gen_params[2*i+1] = '0';
+              break;
+            case "2":
+              gen_params[2*i] = document.getElementById('byte_num_'+(i+1).toString()).value;
+              gen_params[2*i+1] = '0';
+              break;
+            case "3":
+              gen_params[2*i] = document.getElementById('burst_pckts_'+(i+1).toString()).value;
+              gen_params[2*i+1] = document.getElementById('burst_cycles_betw_pckts_'+(i+1).toString()).value;
+              break;
+          }
+        }
+
+        for(let j = 0; j<8; j++){
+          console.log(j+': '+gen_params[j]);
+        };
+
+        const check_boxes=['enable_1','enable_2','enable_3','enable_4'];
+        const lb_check_boxes = ['loopback_1','loopback_2','loopback_3','loopback_4'];
+        enable_bits=[];
+        loopback_bits=[];
+
+        for(let i = 0; i<5; i++){
+          check_box_value = document.getElementById(check_boxes[i]);
+          if(check_box_value = "1"){
+            enable_bits[i] = "1";
+          }
+          else{
+            enable_bits[i] = "0";S
+          }
+
+          lb_check_box_value = document.getElementById(lb_check_boxes[i]);
+          if(lb_check_box_value = "1"){
+            loopback_bits[i] = "1";
+          }
+          else{
+            loopback_bits[i] = "0";
+          }
+        }
+        
+
+        const config_data = {
+          channel_0:{
+            dest_mac: document.getElementById('dest_mac_1').value,
+            source_mac: document.getElementById('source_mac_1').value,
+            pckt_len: document.getElementById('length_1').value,
+            gen_mode: document.getElementById('mode_1').value,
+            param1: gen_params[0],
+            param2: gen_params[1],
+            payload: document.getElementById('payload_1').value,
+            enable: enable_bits[0],
+            loopback: loopback_bits[0]
+          },
+          channel_1:{
+            dest_mac: document.getElementById('dest_mac_2').value,
+            source_mac: document.getElementById('source_mac_2').value,
+            pckt_len: document.getElementById('length_2').value,
+            gen_mode: document.getElementById('mode_2').value,
+            param1: gen_params[2],
+            param2: gen_params[3],
+            payload: document.getElementById('payload_2').value,
+            enable: enable_bits[1],
+            loopback: loopback_bits[1]
+          },
+          channel_2:{
+            dest_mac: document.getElementById('dest_mac_3').value,
+            source_mac: document.getElementById('source_mac_3').value,
+            pckt_len: document.getElementById('length_3').value,
+            gen_mode: document.getElementById('mode_3').value,
+            param1: gen_params[4],
+            param2: gen_params[5],
+            payload: document.getElementById('payload_3').value,
+            enable: enable_bits[2],
+            loopback: loopback_bits[2]
+          },
+          channel_3:{
+            dest_mac: document.getElementById('dest_mac_4').value,
+            source_mac: document.getElementById('source_mac_4').value,
+            pckt_len: document.getElementById('length_4').value,
+            gen_mode: document.getElementById('mode_4').value,
+            param1: gen_params[6],
+            param2: gen_params[7],
+            payload: document.getElementById('payload_4').value,
+            enable: enable_bits[3],
+            loopback: loopback_bits[3]
+          }
+        }
+        fetch('/config_data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(config_data)
+        })
+        .then(response => response.text())
+        .then(data => {
+          console.log('Respuesta del servidor:', data);
+          alert('Dato enviado: ' + destMacValue);
+        })
+        .catch(error => {
+          console.error('Error al enviar datos:', error);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+root@EthGenAnapetaproject:/etc/systemd/system/multi-user.target.wants# cat webserver.service 
+[Unit]
+Description=Python Web Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/webserver/web_server.py
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+
