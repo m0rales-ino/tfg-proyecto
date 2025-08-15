@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="testbench_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="project_pkg" />
+            <top_module name="testbench" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1,511.913 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,667.714 ns"></ZoomEndTime>
+      <Cursor1Time time="1,605.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="136"></NameColumnWidth>
+      <ValueColumnWidth column_width="60"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject type="logic" fp_name="/testbench/ACLK">
+      <obj_property name="ElementShortName">ACLK</obj_property>
+      <obj_property name="ObjectShortName">ACLK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/ARST">
+      <obj_property name="ElementShortName">ARST</obj_property>
+      <obj_property name="ObjectShortName">ARST</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group162">
+      <obj_property name="label">AXI LITE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_aclk">
+         <obj_property name="ElementShortName">s00_axi_aclk</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_aresetn">
+         <obj_property name="ElementShortName">s00_axi_aresetn</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_awaddr">
+         <obj_property name="ElementShortName">s00_axi_awaddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_awaddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_awprot">
+         <obj_property name="ElementShortName">s00_axi_awprot[2:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_awprot[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_awvalid">
+         <obj_property name="ElementShortName">s00_axi_awvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_awvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_awready">
+         <obj_property name="ElementShortName">s00_axi_awready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_awready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_wdata">
+         <obj_property name="ElementShortName">s00_axi_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_wstrb">
+         <obj_property name="ElementShortName">s00_axi_wstrb[3:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_wstrb[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_wvalid">
+         <obj_property name="ElementShortName">s00_axi_wvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_wvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_wready">
+         <obj_property name="ElementShortName">s00_axi_wready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_wready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_bresp">
+         <obj_property name="ElementShortName">s00_axi_bresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_bresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_bvalid">
+         <obj_property name="ElementShortName">s00_axi_bvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_bvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_bready">
+         <obj_property name="ElementShortName">s00_axi_bready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_bready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_araddr">
+         <obj_property name="ElementShortName">s00_axi_araddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_araddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_arprot">
+         <obj_property name="ElementShortName">s00_axi_arprot[2:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_arprot[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_arvalid">
+         <obj_property name="ElementShortName">s00_axi_arvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_arvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_arready">
+         <obj_property name="ElementShortName">s00_axi_arready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_arready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_rdata">
+         <obj_property name="ElementShortName">s00_axi_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/s00_axi_rresp">
+         <obj_property name="ElementShortName">s00_axi_rresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_rresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_rvalid">
+         <obj_property name="ElementShortName">s00_axi_rvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_rvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/s00_axi_rready">
+         <obj_property name="ElementShortName">s00_axi_rready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_rready</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group1607">
+         <obj_property name="label">Control Unit TX0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX0/i_eth_TX_En">
+            <obj_property name="ElementShortName">i_eth_TX_En</obj_property>
+            <obj_property name="ObjectShortName">i_eth_TX_En</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/i_payload_length">
+            <obj_property name="ElementShortName">i_payload_length[10:0]</obj_property>
+            <obj_property name="ObjectShortName">i_payload_length[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX0/i_fifo_full">
+            <obj_property name="ElementShortName">i_fifo_full</obj_property>
+            <obj_property name="ObjectShortName">i_fifo_full</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/i_dest_MAC">
+            <obj_property name="ElementShortName">i_dest_MAC[47:0]</obj_property>
+            <obj_property name="ObjectShortName">i_dest_MAC[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/i_src_MAC">
+            <obj_property name="ElementShortName">i_src_MAC[47:0]</obj_property>
+            <obj_property name="ObjectShortName">i_src_MAC[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/i_payload_pattern">
+            <obj_property name="ElementShortName">i_payload_pattern[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_payload_pattern[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/i_tx_gm_select">
+            <obj_property name="ElementShortName">i_tx_gm_select[2:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx_gm_select[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/i_tx_gm_param">
+            <obj_property name="ElementShortName">i_tx_gm_param[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx_gm_param[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/tx_packet_counter">
+            <obj_property name="ElementShortName">tx_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">tx_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX0/s_fifo_data_last">
+            <obj_property name="ElementShortName">s_fifo_data_last</obj_property>
+            <obj_property name="ObjectShortName">s_fifo_data_last</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX0/clk">
+            <obj_property name="ElementShortName">clk</obj_property>
+            <obj_property name="ObjectShortName">clk</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX0/s_DONE">
+            <obj_property name="ElementShortName">s_DONE</obj_property>
+            <obj_property name="ObjectShortName">s_DONE</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/testbench/DUT/Control_Unit_TX0/current_st8">
+            <obj_property name="ElementShortName">current_st8</obj_property>
+            <obj_property name="ObjectShortName">current_st8</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/testbench/DUT/Control_Unit_TX0/next_st8">
+            <obj_property name="ElementShortName">next_st8</obj_property>
+            <obj_property name="ObjectShortName">next_st8</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group880">
+         <obj_property name="label">Synchronizer_rx0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/testbench/DUT/Synchronizer_rx0/clk_a">
+            <obj_property name="ElementShortName">clk_a</obj_property>
+            <obj_property name="ObjectShortName">clk_a</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Synchronizer_rx0/data_a">
+            <obj_property name="ElementShortName">data_a[63:0]</obj_property>
+            <obj_property name="ObjectShortName">data_a[63:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Synchronizer_rx0/clk_b">
+            <obj_property name="ElementShortName">clk_b</obj_property>
+            <obj_property name="ObjectShortName">clk_b</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Synchronizer_rx0/data_b">
+            <obj_property name="ElementShortName">data_b[63:0]</obj_property>
+            <obj_property name="ObjectShortName">data_b[63:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Synchronizer_rx0/arst">
+            <obj_property name="ElementShortName">arst</obj_property>
+            <obj_property name="ObjectShortName">arst</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Synchronizer_rx0/req">
+            <obj_property name="ElementShortName">req[2:0]</obj_property>
+            <obj_property name="ObjectShortName">req[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Synchronizer_rx0/ack">
+            <obj_property name="ElementShortName">ack[2:0]</obj_property>
+            <obj_property name="ObjectShortName">ack[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Synchronizer_rx0/data_a_latch">
+            <obj_property name="ElementShortName">data_a_latch[63:0]</obj_property>
+            <obj_property name="ObjectShortName">data_a_latch[63:0]</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/testbench/DUT/Synchronizer_rx0/DATA_WIDTH">
+            <obj_property name="ElementShortName">DATA_WIDTH</obj_property>
+            <obj_property name="ObjectShortName">DATA_WIDTH</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group298">
+         <obj_property name="label">Registers</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg0">
+            <obj_property name="ElementShortName">slv_reg0[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg0[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg1">
+            <obj_property name="ElementShortName">slv_reg1[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg1[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg2">
+            <obj_property name="ElementShortName">slv_reg2[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg2[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg3">
+            <obj_property name="ElementShortName">slv_reg3[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg3[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg4">
+            <obj_property name="ElementShortName">slv_reg4[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg4[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg5">
+            <obj_property name="ElementShortName">slv_reg5[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg5[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg6">
+            <obj_property name="ElementShortName">slv_reg6[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg6[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg7">
+            <obj_property name="ElementShortName">slv_reg7[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg7[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg8">
+            <obj_property name="ElementShortName">slv_reg8[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg8[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg9">
+            <obj_property name="ElementShortName">slv_reg9[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg9[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg10">
+            <obj_property name="ElementShortName">slv_reg10[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg10[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg11">
+            <obj_property name="ElementShortName">slv_reg11[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg11[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg12">
+            <obj_property name="ElementShortName">slv_reg12[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg12[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg13">
+            <obj_property name="ElementShortName">slv_reg13[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg13[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg14">
+            <obj_property name="ElementShortName">slv_reg14[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg14[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg15">
+            <obj_property name="ElementShortName">slv_reg15[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg15[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg16">
+            <obj_property name="ElementShortName">slv_reg16[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg16[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg17">
+            <obj_property name="ElementShortName">slv_reg17[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg17[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg18">
+            <obj_property name="ElementShortName">slv_reg18[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg18[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg19">
+            <obj_property name="ElementShortName">slv_reg19[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg19[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg20">
+            <obj_property name="ElementShortName">slv_reg20[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg20[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg21">
+            <obj_property name="ElementShortName">slv_reg21[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg21[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg22">
+            <obj_property name="ElementShortName">slv_reg22[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg22[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg23">
+            <obj_property name="ElementShortName">slv_reg23[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg23[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg24">
+            <obj_property name="ElementShortName">slv_reg24[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg24[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg25">
+            <obj_property name="ElementShortName">slv_reg25[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg25[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg26">
+            <obj_property name="ElementShortName">slv_reg26[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg26[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg27">
+            <obj_property name="ElementShortName">slv_reg27[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg27[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg28">
+            <obj_property name="ElementShortName">slv_reg28[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg28[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg29">
+            <obj_property name="ElementShortName">slv_reg29[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg29[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg30">
+            <obj_property name="ElementShortName">slv_reg30[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg30[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg31">
+            <obj_property name="ElementShortName">slv_reg31[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg31[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg32">
+            <obj_property name="ElementShortName">slv_reg32[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg32[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg33">
+            <obj_property name="ElementShortName">slv_reg33[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg33[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg34">
+            <obj_property name="ElementShortName">slv_reg34[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg34[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg35">
+            <obj_property name="ElementShortName">slv_reg35[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg35[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg36">
+            <obj_property name="ElementShortName">slv_reg36[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg36[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg37">
+            <obj_property name="ElementShortName">slv_reg37[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg37[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/slv_reg38">
+            <obj_property name="ElementShortName">slv_reg38[31:0]</obj_property>
+            <obj_property name="ObjectShortName">slv_reg38[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group345">
+         <obj_property name="label">Internal signals</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_rx0_packet_counter">
+            <obj_property name="ElementShortName">i_rx0_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx0_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_rx0_byte_counter">
+            <obj_property name="ElementShortName">i_rx0_byte_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx0_byte_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_rx1_packet_counter">
+            <obj_property name="ElementShortName">i_rx1_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx1_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_rx1_byte_counter">
+            <obj_property name="ElementShortName">i_rx1_byte_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx1_byte_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_rx2_packet_counter">
+            <obj_property name="ElementShortName">i_rx2_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx2_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_rx2_byte_counter">
+            <obj_property name="ElementShortName">i_rx2_byte_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx2_byte_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_rx3_packet_counter">
+            <obj_property name="ElementShortName">i_rx3_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx3_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_rx3_byte_counter">
+            <obj_property name="ElementShortName">i_rx3_byte_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_rx3_byte_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx0_packet_counter">
+            <obj_property name="ElementShortName">i_tx0_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx0_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx0_byte_counter">
+            <obj_property name="ElementShortName">i_tx0_byte_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx0_byte_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx1_packet_counter">
+            <obj_property name="ElementShortName">i_tx1_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx1_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx1_byte_counter">
+            <obj_property name="ElementShortName">i_tx1_byte_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx1_byte_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx2_packet_counter">
+            <obj_property name="ElementShortName">i_tx2_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx2_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx2_byte_counter">
+            <obj_property name="ElementShortName">i_tx2_byte_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx2_byte_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx3_packet_counter">
+            <obj_property name="ElementShortName">i_tx3_packet_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx3_packet_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx3_byte_counter">
+            <obj_property name="ElementShortName">i_tx3_byte_counter[31:0]</obj_property>
+            <obj_property name="ObjectShortName">i_tx3_byte_counter[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_Enable_Traffic_Flags">
+            <obj_property name="ElementShortName">o_Enable_Traffic_Flags[3:0]</obj_property>
+            <obj_property name="ObjectShortName">o_Enable_Traffic_Flags[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_gen_mode_0">
+            <obj_property name="ElementShortName">o_gen_mode_0[2:0]</obj_property>
+            <obj_property name="ObjectShortName">o_gen_mode_0[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_gen_mode_1">
+            <obj_property name="ElementShortName">o_gen_mode_1[2:0]</obj_property>
+            <obj_property name="ObjectShortName">o_gen_mode_1[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_gen_mode_2">
+            <obj_property name="ElementShortName">o_gen_mode_2[2:0]</obj_property>
+            <obj_property name="ObjectShortName">o_gen_mode_2[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_gen_mode_3">
+            <obj_property name="ElementShortName">o_gen_mode_3[2:0]</obj_property>
+            <obj_property name="ObjectShortName">o_gen_mode_3[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_capture_flags">
+            <obj_property name="ElementShortName">o_capture_flags[3:0]</obj_property>
+            <obj_property name="ObjectShortName">o_capture_flags[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_dest_mac_0">
+            <obj_property name="ElementShortName">o_dest_mac_0[47:0]</obj_property>
+            <obj_property name="ObjectShortName">o_dest_mac_0[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_dest_mac_1">
+            <obj_property name="ElementShortName">o_dest_mac_1[47:0]</obj_property>
+            <obj_property name="ObjectShortName">o_dest_mac_1[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_dest_mac_2">
+            <obj_property name="ElementShortName">o_dest_mac_2[47:0]</obj_property>
+            <obj_property name="ObjectShortName">o_dest_mac_2[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_dest_mac_3">
+            <obj_property name="ElementShortName">o_dest_mac_3[47:0]</obj_property>
+            <obj_property name="ObjectShortName">o_dest_mac_3[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_src_mac_0">
+            <obj_property name="ElementShortName">o_src_mac_0[47:0]</obj_property>
+            <obj_property name="ObjectShortName">o_src_mac_0[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_src_mac_1">
+            <obj_property name="ElementShortName">o_src_mac_1[47:0]</obj_property>
+            <obj_property name="ObjectShortName">o_src_mac_1[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_src_mac_2">
+            <obj_property name="ElementShortName">o_src_mac_2[47:0]</obj_property>
+            <obj_property name="ObjectShortName">o_src_mac_2[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_src_mac_3">
+            <obj_property name="ElementShortName">o_src_mac_3[47:0]</obj_property>
+            <obj_property name="ObjectShortName">o_src_mac_3[47:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_payload_length_0">
+            <obj_property name="ElementShortName">o_payload_length_0[10:0]</obj_property>
+            <obj_property name="ObjectShortName">o_payload_length_0[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_payload_length_1">
+            <obj_property name="ElementShortName">o_payload_length_1[10:0]</obj_property>
+            <obj_property name="ObjectShortName">o_payload_length_1[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_payload_length_2">
+            <obj_property name="ElementShortName">o_payload_length_2[10:0]</obj_property>
+            <obj_property name="ObjectShortName">o_payload_length_2[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_payload_length_3">
+            <obj_property name="ElementShortName">o_payload_length_3[10:0]</obj_property>
+            <obj_property name="ObjectShortName">o_payload_length_3[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_payload_pattern_0">
+            <obj_property name="ElementShortName">o_payload_pattern_0[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_payload_pattern_0[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_payload_pattern_1">
+            <obj_property name="ElementShortName">o_payload_pattern_1[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_payload_pattern_1[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_payload_pattern_3">
+            <obj_property name="ElementShortName">o_payload_pattern_3[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_payload_pattern_3[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_payload_pattern_2">
+            <obj_property name="ElementShortName">o_payload_pattern_2[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_payload_pattern_2[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_gen_mode_param_0">
+            <obj_property name="ElementShortName">o_gen_mode_param_0[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_gen_mode_param_0[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_gen_mode_param_1">
+            <obj_property name="ElementShortName">o_gen_mode_param_1[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_gen_mode_param_1[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_gen_mode_param_2">
+            <obj_property name="ElementShortName">o_gen_mode_param_2[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_gen_mode_param_2[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/o_gen_mode_param_3">
+            <obj_property name="ElementShortName">o_gen_mode_param_3[31:0]</obj_property>
+            <obj_property name="ObjectShortName">o_gen_mode_param_3[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx0_DONE">
+            <obj_property name="ElementShortName">i_tx0_DONE</obj_property>
+            <obj_property name="ObjectShortName">i_tx0_DONE</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx1_DONE">
+            <obj_property name="ElementShortName">i_tx1_DONE</obj_property>
+            <obj_property name="ObjectShortName">i_tx1_DONE</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx2_DONE">
+            <obj_property name="ElementShortName">i_tx2_DONE</obj_property>
+            <obj_property name="ObjectShortName">i_tx2_DONE</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/Packet_Generator_v1_0_S00_AXI_inst/i_tx3_DONE">
+            <obj_property name="ElementShortName">i_tx3_DONE</obj_property>
+            <obj_property name="ObjectShortName">i_tx3_DONE</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group163">
+      <obj_property name="label">TX AXIS 0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench/tx0_axis_aclk">
+         <obj_property name="ElementShortName">tx0_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">tx0_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx0_axis_aresetn">
+         <obj_property name="ElementShortName">tx0_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">tx0_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx0_axis_tvalid">
+         <obj_property name="ElementShortName">tx0_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">tx0_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/tx0_axis_tdata">
+         <obj_property name="ElementShortName">tx0_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">tx0_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/tx0_axis_tstrb">
+         <obj_property name="ElementShortName">tx0_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tx0_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx0_axis_tlast">
+         <obj_property name="ElementShortName">tx0_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">tx0_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx0_axis_tready">
+         <obj_property name="ElementShortName">tx0_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">tx0_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/testbench/DUT/Control_Unit_TX0/current_st8">
+         <obj_property name="ElementShortName">current_st8</obj_property>
+         <obj_property name="ObjectShortName">current_st8</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/testbench/DUT/Control_Unit_TX0/next_st8">
+         <obj_property name="ElementShortName">next_st8</obj_property>
+         <obj_property name="ObjectShortName">next_st8</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX0/s_DONE">
+         <obj_property name="ElementShortName">s_DONE</obj_property>
+         <obj_property name="ObjectShortName">s_DONE</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX0/o_DONE">
+         <obj_property name="ElementShortName">o_DONE</obj_property>
+         <obj_property name="ObjectShortName">o_DONE</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/i_tx_gm_param">
+         <obj_property name="ElementShortName">i_tx_gm_param[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_tx_gm_param[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX0/tx_packet_counter">
+         <obj_property name="ElementShortName">tx_packet_counter[31:0]</obj_property>
+         <obj_property name="ObjectShortName">tx_packet_counter[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group164">
+      <obj_property name="label">TX AXIS 1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench/tx1_axis_aclk">
+         <obj_property name="ElementShortName">tx1_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">tx1_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx1_axis_aresetn">
+         <obj_property name="ElementShortName">tx1_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">tx1_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx1_axis_tvalid">
+         <obj_property name="ElementShortName">tx1_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">tx1_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/tx1_axis_tdata">
+         <obj_property name="ElementShortName">tx1_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">tx1_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/tx1_axis_tstrb">
+         <obj_property name="ElementShortName">tx1_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tx1_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx1_axis_tlast">
+         <obj_property name="ElementShortName">tx1_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">tx1_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx1_axis_tready">
+         <obj_property name="ElementShortName">tx1_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">tx1_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/tx1_axis_tready">
+         <obj_property name="ElementShortName">tx1_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">tx1_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX1/o_DONE">
+         <obj_property name="ElementShortName">o_DONE</obj_property>
+         <obj_property name="ObjectShortName">o_DONE</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX1/i_tx_gm_select">
+         <obj_property name="ElementShortName">i_tx_gm_select[2:0]</obj_property>
+         <obj_property name="ObjectShortName">i_tx_gm_select[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/Control_Unit_TX1/i_tx_gm_param">
+         <obj_property name="ElementShortName">i_tx_gm_param[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_tx_gm_param[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/Control_Unit_TX1/i_eth_TX_En">
+         <obj_property name="ElementShortName">i_eth_TX_En</obj_property>
+         <obj_property name="ObjectShortName">i_eth_TX_En</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group165">
+      <obj_property name="label">TX AXIS 2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench/tx2_axis_aclk">
+         <obj_property name="ElementShortName">tx2_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">tx2_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx2_axis_aresetn">
+         <obj_property name="ElementShortName">tx2_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">tx2_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx2_axis_tvalid">
+         <obj_property name="ElementShortName">tx2_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">tx2_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/tx2_axis_tdata">
+         <obj_property name="ElementShortName">tx2_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">tx2_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/tx2_axis_tstrb">
+         <obj_property name="ElementShortName">tx2_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tx2_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx2_axis_tlast">
+         <obj_property name="ElementShortName">tx2_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">tx2_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx2_axis_tready">
+         <obj_property name="ElementShortName">tx2_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">tx2_axis_tready</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group166">
+      <obj_property name="label">TX AXIS 3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench/tx3_axis_aclk">
+         <obj_property name="ElementShortName">tx3_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">tx3_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx3_axis_aresetn">
+         <obj_property name="ElementShortName">tx3_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">tx3_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx3_axis_tvalid">
+         <obj_property name="ElementShortName">tx3_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">tx3_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/tx3_axis_tdata">
+         <obj_property name="ElementShortName">tx3_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">tx3_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/tx3_axis_tstrb">
+         <obj_property name="ElementShortName">tx3_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tx3_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx3_axis_tlast">
+         <obj_property name="ElementShortName">tx3_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">tx3_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/tx3_axis_tready">
+         <obj_property name="ElementShortName">tx3_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">tx3_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_TX0_AXIS_inst/o_tx_packet_counter">
+         <obj_property name="ElementShortName">o_tx_packet_counter[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_tx_packet_counter[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_TX0_AXIS_inst/o_tx_byte_counter">
+         <obj_property name="ElementShortName">o_tx_byte_counter[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_tx_byte_counter[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group167">
+      <obj_property name="label">RX AXIS 0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx0_axis_aclk">
+         <obj_property name="ElementShortName">rx0_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">rx0_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx0_axis_aresetn">
+         <obj_property name="ElementShortName">rx0_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">rx0_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx0_axis_tready">
+         <obj_property name="ElementShortName">rx0_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">rx0_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/rx0_axis_tdata">
+         <obj_property name="ElementShortName">rx0_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">rx0_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/rx0_axis_tstrb">
+         <obj_property name="ElementShortName">rx0_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rx0_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx0_axis_tlast">
+         <obj_property name="ElementShortName">rx0_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">rx0_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx0_axis_tvalid">
+         <obj_property name="ElementShortName">rx0_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">rx0_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_RX0_AXIS_inst/o_rx_packet_counter">
+         <obj_property name="ElementShortName">o_rx_packet_counter[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_rx_packet_counter[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/Packet_Generator_v1_0_RX0_AXIS_inst/o_rx_byte_counter">
+         <obj_property name="ElementShortName">o_rx_byte_counter[31:0]</obj_property>
+         <obj_property name="ObjectShortName">o_rx_byte_counter[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group276">
+         <obj_property name="label">2ARM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/testbench/DUT/Packet_Generator_v1_0_RX0_AXIS_inst/i_capture_enable">
+            <obj_property name="ElementShortName">i_capture_enable</obj_property>
+            <obj_property name="ObjectShortName">i_capture_enable</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/arm_m0_axis_aclk">
+            <obj_property name="ElementShortName">arm_m0_axis_aclk</obj_property>
+            <obj_property name="ObjectShortName">arm_m0_axis_aclk</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/arm_m0_axis_aresetn">
+            <obj_property name="ElementShortName">arm_m0_axis_aresetn</obj_property>
+            <obj_property name="ObjectShortName">arm_m0_axis_aresetn</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/arm_m0_axis_tvalid">
+            <obj_property name="ElementShortName">arm_m0_axis_tvalid</obj_property>
+            <obj_property name="ObjectShortName">arm_m0_axis_tvalid</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/arm_m0_axis_tdata">
+            <obj_property name="ElementShortName">arm_m0_axis_tdata[63:0]</obj_property>
+            <obj_property name="ObjectShortName">arm_m0_axis_tdata[63:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench/DUT/arm_m0_axis_tstrb">
+            <obj_property name="ElementShortName">arm_m0_axis_tstrb[7:0]</obj_property>
+            <obj_property name="ObjectShortName">arm_m0_axis_tstrb[7:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/arm_m0_axis_tlast">
+            <obj_property name="ElementShortName">arm_m0_axis_tlast</obj_property>
+            <obj_property name="ObjectShortName">arm_m0_axis_tlast</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench/DUT/arm_m0_axis_tready">
+            <obj_property name="ElementShortName">arm_m0_axis_tready</obj_property>
+            <obj_property name="ObjectShortName">arm_m0_axis_tready</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group168">
+      <obj_property name="label">RX AXIS 1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench/rx1_axis_aclk">
+         <obj_property name="ElementShortName">rx1_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx1_axis_aresetn">
+         <obj_property name="ElementShortName">rx1_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx1_axis_tready">
+         <obj_property name="ElementShortName">rx1_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/rx1_axis_tdata">
+         <obj_property name="ElementShortName">rx1_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/rx1_axis_tstrb">
+         <obj_property name="ElementShortName">rx1_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx1_axis_tlast">
+         <obj_property name="ElementShortName">rx1_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx1_axis_tvalid">
+         <obj_property name="ElementShortName">rx1_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx1_axis_aclk">
+         <obj_property name="ElementShortName">rx1_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx1_axis_aresetn">
+         <obj_property name="ElementShortName">rx1_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx1_axis_tready">
+         <obj_property name="ElementShortName">rx1_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/rx1_axis_tdata">
+         <obj_property name="ElementShortName">rx1_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/rx1_axis_tstrb">
+         <obj_property name="ElementShortName">rx1_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx1_axis_tlast">
+         <obj_property name="ElementShortName">rx1_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx1_axis_tvalid">
+         <obj_property name="ElementShortName">rx1_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">rx1_axis_tvalid</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group169">
+      <obj_property name="label">RX AXIS 2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench/rx2_axis_aclk">
+         <obj_property name="ElementShortName">rx2_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx2_axis_aresetn">
+         <obj_property name="ElementShortName">rx2_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx2_axis_tready">
+         <obj_property name="ElementShortName">rx2_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/rx2_axis_tdata">
+         <obj_property name="ElementShortName">rx2_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/rx2_axis_tstrb">
+         <obj_property name="ElementShortName">rx2_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx2_axis_tlast">
+         <obj_property name="ElementShortName">rx2_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx2_axis_tvalid">
+         <obj_property name="ElementShortName">rx2_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx2_axis_aclk">
+         <obj_property name="ElementShortName">rx2_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx2_axis_aresetn">
+         <obj_property name="ElementShortName">rx2_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx2_axis_tready">
+         <obj_property name="ElementShortName">rx2_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/rx2_axis_tdata">
+         <obj_property name="ElementShortName">rx2_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/rx2_axis_tstrb">
+         <obj_property name="ElementShortName">rx2_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx2_axis_tlast">
+         <obj_property name="ElementShortName">rx2_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx2_axis_tvalid">
+         <obj_property name="ElementShortName">rx2_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">rx2_axis_tvalid</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group170">
+      <obj_property name="label">RX AXIS 3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench/rx3_axis_aclk">
+         <obj_property name="ElementShortName">rx3_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx3_axis_aresetn">
+         <obj_property name="ElementShortName">rx3_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx3_axis_tready">
+         <obj_property name="ElementShortName">rx3_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/rx3_axis_tdata">
+         <obj_property name="ElementShortName">rx3_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/rx3_axis_tstrb">
+         <obj_property name="ElementShortName">rx3_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx3_axis_tlast">
+         <obj_property name="ElementShortName">rx3_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/rx3_axis_tvalid">
+         <obj_property name="ElementShortName">rx3_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx3_axis_aclk">
+         <obj_property name="ElementShortName">rx3_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx3_axis_aresetn">
+         <obj_property name="ElementShortName">rx3_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx3_axis_tready">
+         <obj_property name="ElementShortName">rx3_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/rx3_axis_tdata">
+         <obj_property name="ElementShortName">rx3_axis_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tdata[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/rx3_axis_tstrb">
+         <obj_property name="ElementShortName">rx3_axis_tstrb[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tstrb[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx3_axis_tlast">
+         <obj_property name="ElementShortName">rx3_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/rx3_axis_tvalid">
+         <obj_property name="ElementShortName">rx3_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">rx3_axis_tvalid</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/DUT/o_tx0_trigg">
+      <obj_property name="ElementShortName">o_tx0_trigg</obj_property>
+      <obj_property name="ObjectShortName">o_tx0_trigg</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/DUT/o_rx0_trigg">
+      <obj_property name="ElementShortName">o_rx0_trigg</obj_property>
+      <obj_property name="ObjectShortName">o_rx0_trigg</obj_property>
+   </wvobject>
+</wave_config>
