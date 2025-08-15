@@ -9,6 +9,7 @@ SD_PART2_PATH = /media/chustillo/46f91566-ca96-4954-8c2b-462c40af0ae4
 
 
 all: copy-driver copy-server build-project export-project dismount
+project: copy-driver build-driver export-driver
 
 copy-driver:	
 	@echo "Copiando archivos al contenedor (Driver)"
