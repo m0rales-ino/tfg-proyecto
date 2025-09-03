@@ -19,7 +19,44 @@ class MyServer(BaseHTTPRequestHandler):
         path = unquote(self.path)
 
         # Si se pide un archivo (como una imagen)
-        if path != "/" and os.path.isfile("." + path):
+        if path == "/stats":
+            print("STATS")
+            self.send_response(200)
+            self.send_header("Content-type", "text/html; charset=utf-8")
+            self.end_headers()
+            try:
+                with open("stats.html", "r", encoding="utf-8") as f:
+                    contenido = f.read()
+                    self.wfile.write(contenido.encode("utf-8"))
+            except FileNotFoundError:
+                self.wfile.write(b"<html><body><h1>ERROR 404:</h1><h2>stats.html Not Found</h2></body></html>")
+            # return
+        elif path == "/get_stats":
+            # Generar o leer las estadísticas actuales
+            stats = {
+                "tx_frames_1": 120,
+                "tx_bytes_1": 4500,
+                "rx_frames_1": 110,
+                "rx_bytes_1": 4300,
+                "tx_frames_2": 90,
+                "tx_bytes_2": 3000,
+                "rx_frames_2": 85,
+                "rx_bytes_2": 2800,
+                "tx_frames_3": 50,
+                "tx_bytes_3": 2000,
+                "rx_frames_3": 45,
+                "rx_bytes_3": 1800,
+                "tx_frames_4": 70,
+                "tx_bytes_4": 2500,
+                "rx_frames_4": 65,
+                "rx_bytes_4": 2200
+            }
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps(stats).encode('utf-8'))
+            return
+        elif path != "/" and os.path.isfile("." + path):
             # Detecta el tipo MIME (image/png, image/jpeg, etc.)
             mime_type, _ = mimetypes.guess_type(path)
             try:
@@ -30,21 +67,21 @@ class MyServer(BaseHTTPRequestHandler):
                     self.wfile.write(f.read())
             except Exception as e:
                 self.send_error(500, f"Error interno del servidor: {e}")
-            return
-        
+            # return
+        else:
         
 
         # Si se pide la raíz o algo que no es un archivo, sirve el HTML
-        self.send_response(200)
-        self.send_header("Content-type", "text/html; charset=utf-8")
-        self.end_headers()
-        try:
-            #with open("main3.html", "r", encoding="utf-8") as f:
-            with open("main.html", "r", encoding="utf-8") as f:
-                contenido = f.read()
-                self.wfile.write(contenido.encode("utf-8"))
-        except FileNotFoundError:
-            self.wfile.write(b"<html><body><h1>ERROR 404:</h1><h2>Not Found</h2></body></html>")
+            self.send_response(200)
+            self.send_header("Content-type", "text/html; charset=utf-8")
+            self.end_headers()
+            try:
+                #with open("main3.html", "r", encoding="utf-8") as f:
+                with open("main.html", "r", encoding="utf-8") as f:
+                    contenido = f.read()
+                    self.wfile.write(contenido.encode("utf-8"))
+            except FileNotFoundError:
+                self.wfile.write(b"<html><body><h1>ERROR 404:</h1><h2>Not Found</h2></body></html>")
 
     def do_POST(self):
         if self.path == "/config_data":
@@ -65,7 +102,29 @@ class MyServer(BaseHTTPRequestHandler):
             self.wfile.write(b"Datos recibidos correctamente")
         
         elif self.path == "/enable_traffic":
-            en_traffic(0xF, "/dev/ethgenana")
+            
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+        
+            json_str = post_data.decode('utf-8')
+            config = json.loads(json_str)
+
+            flags = 0
+            cc = 0
+            for i in config:
+                a = int(config[i]['enable'])
+
+                flags += a*2**cc
+                cc += 1 
+                print(flags)
+            # print(config)
+
+            en_traffic(flags, "/dev/ethgenana")
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(b"Datos recibidos correctamente")
+        
 
         else:
             self.send_error(404, "Not Found")
@@ -92,9 +151,6 @@ def set_config(trgt_chn, dest_mac, src_mac, pckt_len, gen_mode, gen_mode_param_1
 def en_traffic(flags, device):
     print(f"Flags: {flags}")
 
-def leer_y_mostrar_stats(device):
-    print("Leyendo")
-    
         
 
 

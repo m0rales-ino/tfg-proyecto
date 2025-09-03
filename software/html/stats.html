@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ethernet Frame Generator/Analyzer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: sans-serif;
+        }
+
+        body {
+            background-image: url('https://cadenaser.com/resizer/v2/IFLKT52ZCPT3DHA2JAJZ4EBGMY.jpg?auth=d9b3ad3a8b4a7ade60aad107d1b75f862f2cc92b70d1084f286c85fe3a720ed0');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: #000;
+            padding: 5px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar button {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .navbar button.activo {
+            background-color: white;
+            color: black;
+            border-color: black;
+        }
+
+        .navbar button:hover {
+            background: white;
+            color: black;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .contenido {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .caja {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 1500px;
+            box-sizing: border-box;
+        }
+
+        .caja h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-columns {
+            display: flex;
+            gap: 20px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            /* separador vertical excepto el último */
+            border-right: 1px solid #ddd;
+        }
+
+        .column:last-child {
+            border-right: none;
+        }
+
+        .column h2 {
+            margin: 10px 0 5px 0;
+            /* menos espacio arriba y abajo */
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .column label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            /* separa cada canal */
+            font-weight: normal;
+        }
+
+        .column label input[type="checkbox"] {
+            margin-right: 6px;
+            transform: scale(1.2);
+            /* opcional: hace el checkbox un poco más grande */
+        }
+
+        /* columna izquierda (30%) */
+        .form-columns .column:first-child {
+            flex: 0 0 20%;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            /* nombre a la izq, valor a la dcha */
+            padding: 4px 0;
+            font-size: 1em;
+            border-bottom: 1px dashed #ddd;
+            /* opcional, separador */
+        }
+
+        .stat-row span:first-child {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-row span:last-child {
+            font-family: monospace;
+            /* estilo tipo contador */
+            color: #007bff;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            margin-top: 5px;
+            padding: 8px;
+            font-size: 1em;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            color: black;
+            background-color: white;
+        }
+
+        button[type="postConfig"] {
+            margin: 30px auto 0 auto;
+            /* top auto bottom auto */
+            display: block;
+            width: 80%;
+            padding: 12px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+
+        button[type="postConfig"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="nav-buttons">
+            <button id="config">Configuración</button>
+            <button class="activo" id="stats">Estadísticas</button>
+            <!-- <button data-contenido="monitor">Monitor de tráfico</button> -->
+        </div>
+        <img src="images/ugrlogo.png" alt="Universidad de Granada" class="logo">
+    </div>
+    <div class="contenido" id="contenidoCaja">
+        <div class="caja">
+            <form>
+                <div class="form-columns">
+                    <div class="column">
+                        <h2>Canal 1</h2>
+                        <label><input type="checkbox" id="enable_1" name="enable_1" value="1" checked> Enable</label>
+
+                        <h2>Canal 2</h2>
+                        <label><input type="checkbox" id="enable_2" name="enable_2" value="1" checked> Enable</label>
+
+                        <h2>Canal 3</h2>
+                        <label><input type="checkbox" id="enable_3" name="enable_3" value="1" checked> Enable</label>
+
+
+                        <h2>Canal 4</h2>
+                        <label><input type="checkbox" id="enable_4" name="enable_4" value="1" checked> Enable</label>
+
+                        <button type="postConfig" id="enable_traffic">Activar tráfico</button>
+                    </div>
+                    <div class="column">
+                        <h2>Estad. canal 1</h2>
+                        <div class="stat-row">
+                            <span>Tramas TX: </span>
+                            <span id="tx_frames_1">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Bytes TX: </span>
+                            <span id="tx_bytes_1">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Tramas RX: </span>
+                            <span id="rx_frames_1">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Bytes RX: </span>
+                            <span id="rx_bytes_1">-</span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h2>Estad. canal 2</h2>
+                        <div class="stat-row">
+                            <span>Tramas TX: </span>
+                            <span id="tx_frames_2">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Bytes TX: </span>
+                            <span id="tx_bytes_2">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Tramas RX: </span>
+                            <span id="rx_frames_2">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Bytes RX: </span>
+                            <span id="rx_bytes_2">-</span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h2>Estad. canal 3</h2>
+                        <div class="stat-row">
+                            <span>Tramas TX: </span>
+                            <span id="tx_frames_3">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Bytes TX: </span>
+                            <span id="tx_bytes_3">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Tramas RX: </span>
+                            <span id="rx_frames_3">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Bytes RX: </span>
+                            <span id="rx_bytes_3">-</span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h2>Estad. canal 4</h2>
+                        <div class="stat-row">
+                            <span>Tramas TX: </span>
+                            <span id="tx_frames_4">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Bytes TX: </span>
+                            <span id="tx_bytes_4">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Tramas RX: </span>
+                            <span id="rx_frames_4">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Bytes RX: </span>
+                            <span id="rx_bytes_4">-</span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    <script>
+        // Seleccionamos todos los botones dentro del navbar
+        botones = document.querySelectorAll('.navbar button');
+        contenidoCaja = document.getElementById('contenidoCaja');
+
+        boton_config = document.getElementById('config');
+        boton_config.addEventListener('click', function (event) {
+            botones.forEach(b => b.classList.remove('activo'));
+            boton_estadisticas.classList.add('activo');
+
+            fetch('/')
+                .then(response => response.text()) // El servidor devuelve HTML
+                .then(html => {
+                    document.open();
+                    document.write(html); // Reemplaza toda la página
+                    document.close();
+                })
+                .catch(error => {
+                    console.error('Error al cargar la página:', error);
+                });
+        })
+
+        boton_trafico = document.getElementById('enable_traffic');
+        boton_trafico.addEventListener('click', function (event) {
+
+            const check_boxes = ['enable_1', 'enable_2', 'enable_3', 'enable_4'];
+
+            let enable_bits = []
+
+            for (let i = 0; i < 4; i++) {
+                const cb = document.getElementById(check_boxes[i]);
+                enable_bits[i] = cb.checked ? "1" : "0";
+            }
+
+            const traffic_data = {
+                channel_0: {
+                    enable: enable_bits[0]
+                },
+                channel_1: {
+                    enable: enable_bits[1]
+                },
+                channel_2: {
+                    enable: enable_bits[2]
+                },
+                channel_3: {
+                    enable: enable_bits[3]
+                }
+            }
+
+
+            fetch('/enable_traffic', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(traffic_data)
+            })
+        });
+
+        function actualizarStats() {
+            fetch('/get_stats') // <--- nuevo endpoint
+                .then(response => response.json())
+                .then(stats => {
+                    for (let key in stats) {
+                        const el = document.getElementById(key);
+                        if (el) {
+                            el.textContent = stats[key];
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al obtener estadísticas:', error);
+                    // opcional: poner guiones si falla
+                    const statSpans = document.querySelectorAll('.stat-row span:last-child');
+                    statSpans.forEach(span => span.textContent = '–');
+                });
+        }
+
+        // Actualiza cada segundo
+        setInterval(actualizarStats, 1000);
+
+    </script>
+</body>
+
+</html>

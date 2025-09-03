@@ -378,20 +378,6 @@ begin
         end if;
     end process;
     
-    -- CTRL_MUX_PROC : process(ctrl_mux, clk)
-    -- begin
-    --     case (ctrl_mux) is
-    --         when 0 =>
-    --             o_fifo_data_in <= i_src_MAC (15 downto 0) & i_dest_MAC (47 downto 0);
-    --         when 1 =>
-    --             o_fifo_data_in <= i_payload_pattern (15 downto 0) & ether_type & i_src_MAC (47 downto 16);
-    --         when 2 =>
-    --             o_fifo_data_in <= i_payload_pattern (15 downto 0) & i_payload_pattern (31 downto 0) & i_payload_pattern (31 downto 16);
-    --         when others =>
-    --             o_fifo_data_in <= X"1100110011001100";
-    --     end case;
-    -- end process;
-
     CTRL_MUX_PROC : process(clk)
     begin
         case (ctrl_mux) is

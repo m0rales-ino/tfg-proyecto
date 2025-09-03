@@ -144,9 +144,9 @@
   <body>
     <div class="navbar">
       <div class="nav-buttons">
-        <button class="activo" data-contenido="config">Configuración</button>
-        <button data-contenido="stats">Estadísticas</button>
-        <button data-contenido="monitor">Monitor de tráfico</button>
+        <button class="activo" id="config">Configuración</button>
+        <button id="stats">Estadísticas</button>
+        <!-- <button data-contenido="monitor">Monitor de tráfico</button> -->
       </div>
       <img src="images/ugrlogo.png" alt="Universidad de Granada" class="logo">
     </div>
@@ -336,35 +336,71 @@
     </div>
     <script>
       // Seleccionamos todos los botones dentro del navbar
-      const botones = document.querySelectorAll('.navbar button');
-      const contenidoCaja = document.getElementById('contenidoCaja');
+      botones = document.querySelectorAll('.navbar button');
+      contenidoCaja = document.getElementById('contenidoCaja');
+      
+      // botones.forEach(boton => {
+      //   boton.addEventListener('click', () => {
+      //     botones.forEach(b => b.classList.remove('activo'));
+      //     // boton.classList.add('activo');
+      //     const clave = boton.getAttribute('data-contenido');
+      //     if (contenidos[clave]) {
+      //       contenidoCaja.innerHTML = `<div class="caja">${contenidos[clave]}</div>`;
+      //     }
+      //   });
+      // });
 
-      botones.forEach(boton => {
-        boton.addEventListener('click', () => {
+      boton_estadisticas = document.getElementById('stats');
+      boton_estadisticas.addEventListener('click', function(event){
           botones.forEach(b => b.classList.remove('activo'));
-          boton.classList.add('activo');
-          const clave = boton.getAttribute('data-contenido');
-          if (contenidos[clave]) {
-            contenidoCaja.innerHTML = `<div class="caja">${contenidos[clave]}</div>`;
-          }
-        });
-      });
+          boton_estadisticas.classList.add('activo');
 
-    
-      // Contenidos para cada sección
-      const contenidos = {
-        config: `...`, // Dejar vacío o implementar según necesidad
-        stats: `<h2>Sobre mí</h2><p>Aquí puedes poner información sobre ti o tu organización.</p>`,
-        monitor: `<h2>Proyectos</h2><p>Mira algunos de mis proyectos destacados aquí.</p>`,
-      };
+          fetch('/stats')
+            .then(response => response.text()) // El servidor devuelve HTML
+            .then(html => {
+              document.open();
+              document.write(html); // Reemplaza toda la página
+              document.close();
+            })
+            .catch(error => {
+              console.error('Error al cargar la página:', error);
+            });
+      })
 
       boton_trafico = document.getElementById('enable_traffic');
       boton_trafico.addEventListener('click', function(event){
+
+        const check_boxes=['enable_1','enable_2','enable_3','enable_4'];
+
+        let enable_bits = []
+
+        for(let i = 0; i<4; i++){
+          const cb = document.getElementById(check_boxes[i]);
+          enable_bits[i] = cb.checked ? "1" : "0";
+        }
+        
+        const traffic_data = {
+          channel_0:{
+            enable: enable_bits[0]
+          },
+          channel_1:{
+            enable: enable_bits[1]
+          },
+          channel_2:{
+            enable: enable_bits[2]
+          },
+          channel_3:{
+            enable: enable_bits[3]
+          }
+        }
+
+
         fetch('/enable_traffic', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
+          body: JSON.stringify(traffic_data)
         })
       });
       
@@ -463,8 +499,7 @@
             break;
         }
       });
-      
-      
+
       
       // Enviar la configuración al servidor
       document.querySelector('form').addEventListener('submit', function(event){
@@ -506,17 +541,17 @@
         enable_bits=[];
         loopback_bits=[];
 
-        for(let i = 0; i<5; i++){
+        for(let i = 0; i<4; i++){
           check_box_value = document.getElementById(check_boxes[i]);
-          if(check_box_value = "1"){
+          if(check_box_value == "1"){
             enable_bits[i] = "1";
           }
           else{
-            enable_bits[i] = "0";S
+            enable_bits[i] = "0";
           }
 
           lb_check_box_value = document.getElementById(lb_check_boxes[i]);
-          if(lb_check_box_value = "1"){
+          if(lb_check_box_value == "1"){
             loopback_bits[i] = "1";
           }
           else{
