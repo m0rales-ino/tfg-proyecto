@@ -1,4 +1,4 @@
-PROJECT_DIR=/home/chustillo/projects/Eth_Gen_Ana_petaproject
+PROJECT_DIR=/home/chustillo/projects2/Eth_Gen_Ana_petaproject
 RECIPE_DIR=$(PROJECT_DIR)/project-spec/meta-user/recipes-modules/pckgendriver/files
 SERVER_RECIPE_DIR=$(PROJECT_DIR)/project-spec/meta-user/recipes-apps/webserver/files
 DOCKER_CONTAINER=peta_container
@@ -14,7 +14,7 @@ project: copy-driver build-driver export-driver
 copy-driver:	
 	@echo "Copiando archivos al contenedor (Driver)"
 	@for file in $(shell ls driver/); do \
-		docker cp /home/chustillo/web_server/driver/$$file $(DOCKER_CONTAINER):$(RECIPE_DIR)/;\
+		docker cp /home/chustillo/tfg-proyecto/software/driver/$$file $(DOCKER_CONTAINER):$(RECIPE_DIR)/;\
 	done
 	
 
@@ -74,6 +74,12 @@ export-project:
 export-test:
 	scp -P 2222 -O test_scripts/pl_config.py root@192.168.1.100:/home/root/
 	scp -P 2222 -O test_scripts/dma_read_test.py root@192.168.1.100:/home/root/
+
+export-server:
+	scp -P 2222 -O html/web_server.py root@192.168.1.100:/opt/webserver
+	scp -P 2222 -O html/*.html root@192.168.1.100:/opt/webserver
+
+
 
 clean:
 	docker exec $(DOCKER_CONTAINER) bash -c "source $(SETTINGS_PATH) && cd $(PROJECT_DIR) && petalinux-build -c pckgendriver -x clean"

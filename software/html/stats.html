@@ -96,6 +96,7 @@
         .column {
             flex: 1;
             padding: 20px;
+            width: 250px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -131,7 +132,7 @@
 
         /* columna izquierda (30%) */
         .form-columns .column:first-child {
-            flex: 0 0 20%;
+            flex: 0 0 10%;
         }
 
         .stat-row {
@@ -151,8 +152,17 @@
 
         .stat-row span:last-child {
             font-family: monospace;
-            /* estilo tipo contador */
+            font-size: 15px;
             color: #007bff;
+        }
+
+        .stats-block {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            /* separación entre bloques */
+            border-radius: 5px;
+            background-color: #f9f9f9;
         }
 
         label {
@@ -225,113 +235,254 @@
                     </div>
                     <div class="column">
                         <h2>Estad. canal 1</h2>
-                        <div class="stat-row">
-                            <span>Tramas TX: </span>
-                            <span id="tx_frames_1">-</span>
+
+                        <!-- Bloque original -->
+                        <div class="stats-block">
+                            <div class="stat-row">
+                                <span>Tramas TX: </span>
+                                <span id="tx_frames_1">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Bytes TX: </span>
+                                <span id="tx_bytes_1">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Tramas RX: </span>
+                                <span id="rx_frames_1">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Bytes RX: </span>
+                                <span id="rx_bytes_1">-</span>
+                            </div>
                         </div>
-                        <div class="stat-row">
-                            <span>Bytes TX: </span>
-                            <span id="tx_bytes_1">-</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Tramas RX: </span>
-                            <span id="rx_frames_1">-</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Bytes RX: </span>
-                            <span id="rx_bytes_1">-</span>
+
+                        <!-- Bloque duplicado con la misma clase -->
+                        <div class="stats-block">
+                            <div class="stat-row">
+                                <span>Velocidad TX: </span>
+                                <span id="tx_speed_1">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Velocidad RX: </span>
+                                <span id="rx_speed_1">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Porc. pérd.: </span>
+                                <span id="loss_1">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Delta pérd.: </span>
+                                <span id="delta_loss_1">-</span>
+                            </div>
                         </div>
                     </div>
                     <div class="column">
                         <h2>Estad. canal 2</h2>
-                        <div class="stat-row">
-                            <span>Tramas TX: </span>
-                            <span id="tx_frames_2">-</span>
+
+                        <!-- Bloque original -->
+                        <div class="stats-block">
+                            <div class="stat-row">
+                                <span>Tramas TX: </span>
+                                <span id="tx_frames_2">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Bytes TX: </span>
+                                <span id="tx_bytes_2">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Tramas RX: </span>
+                                <span id="rx_frames_2">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Bytes RX: </span>
+                                <span id="rx_bytes_2">-</span>
+                            </div>
                         </div>
-                        <div class="stat-row">
-                            <span>Bytes TX: </span>
-                            <span id="tx_bytes_2">-</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Tramas RX: </span>
-                            <span id="rx_frames_2">-</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Bytes RX: </span>
-                            <span id="rx_bytes_2">-</span>
+
+                        <!-- Bloque duplicado con la misma clase -->
+                        <div class="stats-block">
+                            <div class="stat-row">
+                                <span>Velocidad TX: </span>
+                                <span id="tx_speed_2">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Velocidad RX: </span>
+                                <span id="rx_speed_2">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Porc. pérd.: </span>
+                                <span id="loss_2">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Delta pérd.: </span>
+                                <span id="delta_loss_2">-</span>
+                            </div>
                         </div>
                     </div>
                     <div class="column">
                         <h2>Estad. canal 3</h2>
-                        <div class="stat-row">
-                            <span>Tramas TX: </span>
-                            <span id="tx_frames_3">-</span>
+
+                        <!-- Bloque original -->
+                        <div class="stats-block">
+                            <div class="stat-row">
+                                <span>Tramas TX: </span>
+                                <span id="tx_frames_3">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Bytes TX: </span>
+                                <span id="tx_bytes_3">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Tramas RX: </span>
+                                <span id="rx_frames_3">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Bytes RX: </span>
+                                <span id="rx_bytes_3">-</span>
+                            </div>
                         </div>
-                        <div class="stat-row">
-                            <span>Bytes TX: </span>
-                            <span id="tx_bytes_3">-</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Tramas RX: </span>
-                            <span id="rx_frames_3">-</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Bytes RX: </span>
-                            <span id="rx_bytes_3">-</span>
+
+                        <!-- Bloque duplicado con la misma clase -->
+                        <div class="stats-block">
+                            <div class="stat-row">
+                                <span>Velocidad TX: </span>
+                                <span id="tx_speed_3">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Velocidad RX: </span>
+                                <span id="rx_speed_3">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Porc. pérd.: </span>
+                                <span id="loss_3">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Delta pérd.: </span>
+                                <span id="delta_loss_3">-</span>
+                            </div>
                         </div>
                     </div>
                     <div class="column">
                         <h2>Estad. canal 4</h2>
-                        <div class="stat-row">
-                            <span>Tramas TX: </span>
-                            <span id="tx_frames_4">-</span>
+
+                        <!-- Bloque original -->
+                        <div class="stats-block">
+                            <div class="stat-row">
+                                <span>Tramas TX: </span>
+                                <span id="tx_frames_4">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Bytes TX: </span>
+                                <span id="tx_bytes_4">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Tramas RX: </span>
+                                <span id="rx_frames_4">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Bytes RX: </span>
+                                <span id="rx_bytes_4">-</span>
+                            </div>
                         </div>
-                        <div class="stat-row">
-                            <span>Bytes TX: </span>
-                            <span id="tx_bytes_4">-</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Tramas RX: </span>
-                            <span id="rx_frames_4">-</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Bytes RX: </span>
-                            <span id="rx_bytes_4">-</span>
+
+                        <!-- Bloque duplicado con la misma clase -->
+                        <div class="stats-block">
+                            <div class="stat-row">
+                                <span>Velocidad TX: </span>
+                                <span id="tx_speed_4">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Velocidad RX: </span>
+                                <span id="rx_speed_4">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Porc. pérd.: </span>
+                                <span id="loss_4">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Delta pérd.: </span>
+                                <span id="delta_loss_4">-</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </form>
         </div>
-        </form>
-    </div>
     </div>
     <script>
+
+        // Variables globales (persisten entre llamadas)
+        tx_bytes_prev = [0, 0, 0, 0];
+        rx_bytes_prev = [0, 0, 0, 0];
+        tx_bytes_prev_gb = [0, 0, 0, 0];
+        rx_bytes_prev_gb = [0, 0, 0, 0];
+        tx_bytes_counter = [0, 0, 0, 0];
+        rx_bytes_counter = [0, 0, 0, 0];
+
+        function calcularStats(tx_packets, rx_packets, tx_bytes, rx_bytes) {
+            let perc_loss = [0, 0, 0, 0];
+            let delta_loss = [0, 0, 0, 0];
+            let speed_tx = [0, 0, 0, 0];
+            let speed_rx = [0, 0, 0, 0];
+            let tx_byte_gb = [0, 0, 0, 0];
+            let rx_byte_gb = [0, 0, 0, 0];
+
+            for (let i = 0; i < 4; i++) {
+                // Diferencia de paquetes perdidos
+                delta_loss[i] = tx_packets[i] - rx_packets[i];
+
+                // Pérdida porcentual
+                if (tx_packets[i] === 0) {
+                    perc_loss[i] = 0.00;
+                } else {
+                    perc_loss[i] = (1 - rx_packets[i] / tx_packets[i]) * 100;
+                }
+
+                // Detección de overflow de 32 bits
+                if (tx_bytes[i] < tx_bytes_prev[i]) {
+                    tx_bytes_counter[i]++;
+                }
+                if (rx_bytes[i] < rx_bytes_prev[i]) {
+                    rx_bytes_counter[i]++;
+                }
+
+                // Bytes acumulados en GB
+                tx_byte_gb[i] = 4.294967295 * tx_bytes_counter[i] + tx_bytes[i] / 1e9;
+                rx_byte_gb[i] = 4.294967295 * rx_bytes_counter[i] + rx_bytes[i] / 1e9;
+
+                // Velocidades (GBps) – intervalo de 0.5s
+                speed_tx[i] = (tx_byte_gb[i] - tx_bytes_prev_gb[i]) / 0.5;
+                speed_rx[i] = (rx_byte_gb[i] - rx_bytes_prev_gb[i]) / 0.5;
+
+                // Actualizar históricos
+                tx_bytes_prev[i] = tx_bytes[i];
+                rx_bytes_prev[i] = rx_bytes[i];
+                tx_bytes_prev_gb[i] = tx_byte_gb[i];
+                rx_bytes_prev_gb[i] = rx_byte_gb[i];
+            }
+
+            return {
+                perc_loss,
+                delta_loss,
+                speed_tx,
+                speed_rx,
+                tx_byte_gb,
+                rx_byte_gb
+            };
+        }
+
         // Seleccionamos todos los botones dentro del navbar
         botones = document.querySelectorAll('.navbar button');
         contenidoCaja = document.getElementById('contenidoCaja');
 
-        boton_config = document.getElementById('config');
-        boton_config.addEventListener('click', function (event) {
-            botones.forEach(b => b.classList.remove('activo'));
-            boton_estadisticas.classList.add('activo');
-
-            fetch('/')
-                .then(response => response.text()) // El servidor devuelve HTML
-                .then(html => {
-                    document.open();
-                    document.write(html); // Reemplaza toda la página
-                    document.close();
-                })
-                .catch(error => {
-                    console.error('Error al cargar la página:', error);
-                });
-        })
+        
 
         boton_trafico = document.getElementById('enable_traffic');
         boton_trafico.addEventListener('click', function (event) {
+            event.preventDefault();  // evita recarga
 
             const check_boxes = ['enable_1', 'enable_2', 'enable_3', 'enable_4'];
-
-            let enable_bits = []
+            let enable_bits = [];
 
             for (let i = 0; i < 4; i++) {
                 const cb = document.getElementById(check_boxes[i]);
@@ -339,28 +490,20 @@
             }
 
             const traffic_data = {
-                channel_0: {
-                    enable: enable_bits[0]
-                },
-                channel_1: {
-                    enable: enable_bits[1]
-                },
-                channel_2: {
-                    enable: enable_bits[2]
-                },
-                channel_3: {
-                    enable: enable_bits[3]
-                }
-            }
-
+                channel_0: { enable: enable_bits[0] },
+                channel_1: { enable: enable_bits[1] },
+                channel_2: { enable: enable_bits[2] },
+                channel_3: { enable: enable_bits[3] }
+            };
 
             fetch('/enable_traffic', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(traffic_data)
             })
+                .then(response => response.text())
+                .then(msg => console.log("Servidor respondió:", msg))
+                .catch(error => console.error("Error al enviar tráfico:", error));
         });
 
         function actualizarStats() {
@@ -373,6 +516,58 @@
                             el.textContent = stats[key];
                         }
                     }
+                    tx_packets = [
+                        stats.tx_frames_1,
+                        stats.tx_frames_2,
+                        stats.tx_frames_3,
+                        stats.tx_frames_4
+                    ];
+                    rx_packets = [
+                        stats.rx_frames_1,
+                        stats.rx_frames_2,
+                        stats.rx_frames_3,
+                        stats.rx_frames_4
+                    ];
+                    tx_bytes = [
+                        stats.tx_bytes_1, // tendrás que mandar estos valores en bruto (32 bits)
+                        stats.tx_bytes_2,
+                        stats.tx_bytes_3,
+                        stats.tx_bytes_4
+                    ];
+                    rx_bytes = [
+                        stats.rx_bytes_1,
+                        stats.rx_bytes_2,
+                        stats.rx_bytes_3,
+                        stats.rx_bytes_4
+                    ];
+
+                    // Llamar a la función que hace los cálculos en el cliente
+                    statss = calcularStats(tx_packets, rx_packets, tx_bytes, rx_bytes);
+                    
+                    document.getElementById("tx_speed_1").innerText = statss.speed_tx[0].toFixed(2) + " GBps";
+                    document.getElementById("tx_speed_2").innerText = statss.speed_tx[1].toFixed(2) + " GBps";
+                    document.getElementById("tx_speed_3").innerText = statss.speed_tx[2].toFixed(2) + " GBps";
+                    document.getElementById("tx_speed_4").innerText = statss.speed_tx[3].toFixed(2) + " GBps";
+                    document.getElementById("rx_speed_1").innerText = statss.speed_rx[0].toFixed(2) + " GBps";
+                    document.getElementById("rx_speed_2").innerText = statss.speed_rx[1].toFixed(2) + " GBps";
+                    document.getElementById("rx_speed_3").innerText = statss.speed_rx[2].toFixed(2) + " GBps";
+                    document.getElementById("rx_speed_4").innerText = statss.speed_rx[3].toFixed(2) + " GBps";
+                    document.getElementById("loss_1").innerText = statss.perc_loss[0].toFixed(2) + " %";
+                    document.getElementById("loss_2").innerText = statss.perc_loss[1].toFixed(2) + " %";
+                    document.getElementById("loss_3").innerText = statss.perc_loss[2].toFixed(2) + " %";
+                    document.getElementById("loss_4").innerText = statss.perc_loss[3].toFixed(2) + " %";
+                    document.getElementById("tx_bytes_1").innerText = statss.tx_byte_gb[0].toFixed(2) + " GB";
+                    document.getElementById("tx_bytes_2").innerText = statss.tx_byte_gb[1].toFixed(2) + " GB";
+                    document.getElementById("tx_bytes_3").innerText = statss.tx_byte_gb[2].toFixed(2) + " GB";
+                    document.getElementById("tx_bytes_4").innerText = statss.tx_byte_gb[3].toFixed(2) + " GB";
+                    document.getElementById("rx_bytes_1").innerText = statss.rx_byte_gb[0].toFixed(2) + " GB";
+                    document.getElementById("rx_bytes_2").innerText = statss.rx_byte_gb[1].toFixed(2) + " GB";
+                    document.getElementById("rx_bytes_3").innerText = statss.rx_byte_gb[2].toFixed(2) + " GB";
+                    document.getElementById("rx_bytes_4").innerText = statss.rx_byte_gb[3].toFixed(2) + " GB";
+                    document.getElementById("delta_loss_1").innerText = statss.delta_loss[0];
+                    document.getElementById("delta_loss_2").innerText = statss.delta_loss[1];
+                    document.getElementById("delta_loss_3").innerText = statss.delta_loss[2];
+                    document.getElementById("delta_loss_4").innerText = statss.delta_loss[3];
                 })
                 .catch(error => {
                     console.error('Error al obtener estadísticas:', error);
@@ -383,7 +578,23 @@
         }
 
         // Actualiza cada segundo
-        setInterval(actualizarStats, 1000);
+        statsInterval = setInterval(actualizarStats, 500);
+
+        boton_config = document.getElementById('config');
+        boton_config.addEventListener('click', function (event) {
+            clearInterval(statsInterval);
+
+            fetch('/')
+                .then(response => response.text()) // El servidor devuelve HTML
+                .then(html => {
+                    document.open();
+                    document.write(html); // Reemplaza toda la página
+                    document.close();
+                })
+                .catch(error => {
+                    console.error('Error al cargar la página:', error);
+                });
+        })
 
     </script>
 </body>

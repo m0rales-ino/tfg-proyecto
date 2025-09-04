@@ -18,7 +18,7 @@ class MyServer(BaseHTTPRequestHandler):
         # Decodifica la ruta (por si hay espacios, %20, etc.)
         path = unquote(self.path)
 
-        # Si se pide un archivo (como una imagen)
+        
         if path == "/stats":
             print("STATS")
             self.send_response(200)

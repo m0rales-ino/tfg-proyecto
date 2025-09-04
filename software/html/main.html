@@ -542,23 +542,13 @@
         loopback_bits=[];
 
         for(let i = 0; i<4; i++){
-          check_box_value = document.getElementById(check_boxes[i]);
-          if(check_box_value == "1"){
-            enable_bits[i] = "1";
-          }
-          else{
-            enable_bits[i] = "0";
-          }
+          const cb_enable = document.getElementById(check_boxes[i]);
+          enable_bits[i] = cb_enable.checked ? "1" : "0";
 
-          lb_check_box_value = document.getElementById(lb_check_boxes[i]);
-          if(lb_check_box_value == "1"){
-            loopback_bits[i] = "1";
-          }
-          else{
-            loopback_bits[i] = "0";
-          }
+          const cb_loopback = document.getElementById(lb_check_boxes[i]);
+          loopback_bits[i] = cb_loopback.checked ? "1" : "0";
         }
-        
+                
 
         const config_data = {
           channel_0:{

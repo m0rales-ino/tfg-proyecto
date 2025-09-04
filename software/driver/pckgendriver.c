@@ -30,10 +30,10 @@ typedef struct {
     u64 src_mac;
     u32 pckt_len;
     u8  gen_mode;
-    u32 gen_mode_param;
+    u32 gen_mode_param1;
+    u16 gen_mode_param2;
     u32 payload_pattern;
     u8  loopback_flg;
-    u8  enable_flg;
 } __attribute__((packed)) config_pckt_gen;
 
 typedef struct{
@@ -56,7 +56,7 @@ int src_mac_config(u64 mac, u8 chn);
 int set_payload_pattern(u32 pattern, u8 chn);
 int set_enable(u8 flags);
 int set_capture_flags(u8 flags);
-// int configure_ETH_MAC(u8 eth_channel_flag, u8 loopback_flag, void __iomem *axi_array);
+int configure_ETH_MAC(u8 chn, u8 loopback_flag);
 int set_pcktgen_config(config_pckt_gen param);
 u32 stats_read(s8 chn, u8 packet_or_byte);
 
@@ -446,22 +446,19 @@ int set_capture_flags(u8 flags){
 }
 
 
-int configure_ETH_MAC(u8 eth_channel_flag, u8 loopback_flag){
-    int i;
-    for (i = 0; i < 4; i++){
-        if ((eth_channel_flag & (1 << i)) != 0){
-            if ((loopback_flag & (1 << i)) != 0)
-            iowrite32(0xC0000000 , axi_eth_channels[i] + 0x08);
-            else
-            iowrite32(0x40000000 , axi_eth_channels[i] + 0x08);
-
-            iowrite32(0x00003003 , axi_eth_channels[i] + 0x0C);
-            iowrite32(0x00000033 , axi_eth_channels[i] + 0x14);
-            iowrite32(0x00000001 , axi_eth_channels[i] + 0x00);
-            iowrite32(0x00000001 , axi_eth_channels[i] + 0x20);
-        }
-	
+int configure_ETH_MAC(u8 chn, u8 loopback_flag){
+    if (loopback_flag!= 0){
+        iowrite32(0xC0000000 , axi_eth_channels[chn] + 0x08);
     }
+    else{
+        iowrite32(0x40000000 , axi_eth_channels[chn] + 0x08);
+    }
+
+    iowrite32(0x00003003 , axi_eth_channels[chn] + 0x0C);
+    iowrite32(0x00000033 , axi_eth_channels[chn] + 0x14);
+    iowrite32(0x00000001 , axi_eth_channels[chn] + 0x00);
+    iowrite32(0x00000001 , axi_eth_channels[chn] + 0x20);
+
     return 0;
 }
 
@@ -546,13 +543,13 @@ int gen_mode_burst(u16 pckts_per_burst, u16 cycles_per_halt, u8 chn){
 
 int set_pcktgen_config(config_pckt_gen param){
 
-    configure_ETH_MAC(param.enable_flg,param.loopback_flg); 
+    configure_ETH_MAC(param.trgt_chn, param.loopback_flg); 
     
     dest_mac_config(param.dest_mac, param.trgt_chn);
     if(param.gen_mode == 3){
-        gen_mode_burst(30, 600, param.trgt_chn);
+        gen_mode_burst(param.gen_mode_param1, param.gen_mode_param2, param.trgt_chn);
     } else
-        gen_mode_config(param.gen_mode, param.gen_mode_param, param.trgt_chn);
+        gen_mode_config(param.gen_mode, param.gen_mode_param1, param.trgt_chn);
 
     src_mac_config(param.src_mac, param.trgt_chn);
     set_payload_pattern(param.payload_pattern, param.trgt_chn);
