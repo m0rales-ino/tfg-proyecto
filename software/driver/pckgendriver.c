@@ -9,21 +9,19 @@
 
 #include "eth_gen_ana_lib.h"
 
+#define DEVICE_NAME "ethgenana"
+#define CLASS_NAME  "pcktgen"
+
 static int major;
 static struct class*  class  = NULL;
 static struct device* device = NULL;
 static struct cdev cdev;
 
-//Puntero hacia los registros. __iomem indica que es memoria I/O mapeada, no RAM
+//Puntero hacia los registros.
 static void __iomem *axi_pckt_gen = NULL;
-
 static void __iomem *axi_eth_channels[4] = { NULL };
 
-#define DEVICE_NAME "ethgenana"
-#define CLASS_NAME  "pcktgen"
-
-
-
+// Estructura para la configuración de los parámetros
 typedef struct {
     u8  trgt_chn;
     u64 dest_mac;
@@ -36,11 +34,13 @@ typedef struct {
     u8  loopback_flg;
 } __attribute__((packed)) config_pckt_gen;
 
+// Estructura para el envío de las estadísticas
 typedef struct{
     u8 trgt_chn;
     u8 lb_flg;
 } __attribute__((packed)) mac_config;
 
+// Estructura para activar captura de tráfico
 typedef struct{
     u32 tx_bytes[4];
     u32 tx_packets[4];
@@ -48,6 +48,7 @@ typedef struct{
     u32 rx_packets[4];
 } __attribute__((packed)) stats;
 
+// Prototipos para funciones
 int dest_mac_config(u64 mac, u8 chn);
 int gen_mode_config(u8 mode, u32 param, u8 chn);
 int gen_mode_burst(u16 pckts_per_burst, u16 cycles_per_halt, u8 chn);
@@ -68,12 +69,11 @@ static int open_op(struct inode *inodep, struct file *filep) {
 
 static ssize_t read_op(struct file *filep, char *buffer, size_t len, loff_t *offset) {
     
-    
-
     stats estadisticas;
     size_t struct_size = sizeof(estadisticas);
     int i;
 
+    // Comprobación del número de bytes. Si es menor de la cantidad de bytes a enviar, terminar la función con error.
     if (len < struct_size)
         return -EINVAL;
     
@@ -97,32 +97,34 @@ static ssize_t write_op(struct file *filep, const char *buffer, size_t len, loff
     size_t to_copy = min(len,sizeof(kbuf)-1);
     size_t i = 0;
     
-
     pr_info("Ethernet Generator/Analizer: escritura en dispositivo");
-
+    
+    // Si no se ha escrito nada, lanzar error.
     if (!buffer || len == 0)
     return -EINVAL;
 
-     if (copy_from_user(kbuf, buffer, to_copy)) {
+    // Obtener los datos escritos desde el espacio de usuario con comprobación de error
+    if (copy_from_user(kbuf, buffer, to_copy)) {
         return -EFAULT;
     }
 
+    //Añadir un caracter de terminación de linea para delimitar los datos
     kbuf[to_copy] = '\0';
 
-    printk(KERN_INFO "my_driver: write buffer as hex:");
+    printk(KERN_INFO "Ethernet Generator/Analizer: escritura en buffer.");
     for (i = 0; i < to_copy; ++i) {
         printk(KERN_CONT " %02x", (unsigned char)kbuf[i]);
     }
     
-    // cmd at the first received byte symbolizes if the configuratino is directed to pckt_gen or eth_macs
-    
+    // El primer byte simboliza el próposito de la escritura, si para configurar o activar tráfico.
+    // Obtener la dirección del primer byte
     if (copy_from_user(&cmd, buffer, 1))
         return -EFAULT;
 
+    // Comprobación y parseo de los datos.
     switch (cmd)
     {
-    // In case it is pckt_gen, the msg will be parsed into config_pckt_gen struct
-    case CFG_TYPE_PCKT_GEN: // Configure Packet Generator
+    case CFG_TYPE_PCKT_GEN: // Configurar generador de tramas
         
         if (len < 1 + sizeof(params)) {
             pr_info("Ethernet Generator/Analyzer: paquete write demasiado corto\n");
@@ -138,7 +140,7 @@ static ssize_t write_op(struct file *filep, const char *buffer, size_t len, loff
 
         break;  
     
-    case 0x01: // Enable traffic
+    case ENABLE_TRAFFIC: // Enable traffic
         if (len > 2) {
             pr_info("Ethernet Generator/Analyzer: paquete write demasiado largo\n");
             return -EINVAL;
@@ -146,7 +148,7 @@ static ssize_t write_op(struct file *filep, const char *buffer, size_t len, loff
         set_enable(buffer[1]);
         break;
     
-    case 0x02:
+    case ENABLE_CAPTURE:
         if (len > 2) {
             pr_info("Ethernet Generator/Analyzer: paquete write demasiado largo\n");
             return -EINVAL;
@@ -157,7 +159,6 @@ static ssize_t write_op(struct file *filep, const char *buffer, size_t len, loff
         break;
     }
 
-
     pr_info("Ethernet Generator/Analizer: nueva configuración aplicada\n");
     return len;
 }
@@ -166,7 +167,6 @@ static int release_op(struct inode *inodep, struct file *filep) {
     pr_info(KERN_INFO "Ethernet Generator/Analyzer dispositivo cerrado\n");
     return 0;
 }
-
 
 static struct file_operations fops = {
     .open = open_op,
@@ -179,6 +179,7 @@ static int __init init_driver(void) {
     // Kernel logging
     pr_info(KERN_INFO "Ethernet Generator/Analyzer: iniciando\n");
 
+    // Registro de dispositivo.
     major = register_chrdev(0, DEVICE_NAME, &fops);
     if (major < 0) {
         pr_err(KERN_ALERT "Ethernet Generator/Analyzer: fallo al registrar major\n");
@@ -200,6 +201,7 @@ static int __init init_driver(void) {
         cdev_init(&cdev, &fops);
     cdev_add(&cdev, MKDEV(major, 0), 1);
 
+    // Mapeado de los registros AXI como memoria mapeada
     axi_pckt_gen = ioremap(PCKT_GEN_BA, AXI_MAP_SIZE);
     if (!axi_pckt_gen) {
         pr_err(KERN_ALERT "Error mapeando AXI Packet Generator\n");
@@ -230,12 +232,12 @@ static int __init init_driver(void) {
         return -ENOMEM;
     }
 
-
     pr_info(KERN_INFO "Ethernet Generator/Analyzer: cargado correctamente con major %d\n", major);
     return 0;
 }
 
 static void __exit exit_driver(void) {
+    // Desmapear la memoria
     if (axi_pckt_gen)
         iounmap(axi_pckt_gen);
 
@@ -251,6 +253,7 @@ static void __exit exit_driver(void) {
     if (axi_eth_channels[3])
         iounmap(axi_eth_channels[3]);
 
+    // Desregistrar el dispositivo
     device_destroy(class, MKDEV(major, 0));
     class_destroy(class);
     unregister_chrdev(major, DEVICE_NAME);
@@ -274,33 +277,33 @@ int dest_mac_config(u64 mac, u8 chn){
         break;
     
     case 1:
-        // Write lower part of dest_MAC_0
+        // Write lower part of dest_MAC_1
         iowrite32((u32)mac, axi_pckt_gen + OFFSET_DEST_MAC_1_LOW);
 
-        //Writes upper part of dest_MAC_0
+        //Writes upper part of dest_MAC_1
         prev_value = ioread32(axi_pckt_gen + OFFSET_DEST_MAC_1_HIGH);
-        prev_value = (prev_value & 0x0000FFFF) | ((u32)(mac >> 16)& 0xFFFF0000); // these offsets are going to be magic numbers, im too lazy to set these as macros
+        prev_value = (prev_value & 0x0000FFFF) | ((u32)(mac >> 16)& 0xFFFF0000);
         iowrite32(prev_value, axi_pckt_gen + OFFSET_DEST_MAC_1_HIGH);
         break;
 
     case 2:
-        // Write lower part of dest_MAC_0
+        // Write lower part of dest_MAC_2
         iowrite32((u32)mac, axi_pckt_gen + OFFSET_DEST_MAC_2_LOW);
 
-        //Writes upper part of dest_MAC_0
+        //Writes upper part of dest_MAC_2
         prev_value = ioread32(axi_pckt_gen + OFFSET_DEST_MAC_2_HIGH);
-        prev_value = (prev_value & 0xFFFF0000) | (u32)(mac >> 32); // these offsets are going to be magic numbers, im too lazy to set these as macros
+        prev_value = (prev_value & 0xFFFF0000) | (u32)(mac >> 32);
         iowrite32(prev_value, axi_pckt_gen + OFFSET_DEST_MAC_2_HIGH);
 
         break;
     
     case 3:
-        // Write lower part of dest_MAC_0
+        // Write lower part of dest_MAC_3
         iowrite32((u32)mac, axi_pckt_gen + OFFSET_DEST_MAC_3_LOW);
 
-        //Writes upper part of dest_MAC_0
+        //Writes upper part of dest_MAC_3
         prev_value = ioread32(axi_pckt_gen + OFFSET_DEST_MAC_3_HIGH);
-        prev_value = (prev_value & 0x0000FFFF) | ((u32)(mac >> 16)& 0xFFFF0000); // these offsets are going to be magic numbers, im too lazy to set these as macros
+        prev_value = (prev_value & 0x0000FFFF) | ((u32)(mac >> 16)& 0xFFFF0000);
         iowrite32(prev_value, axi_pckt_gen + OFFSET_DEST_MAC_3_HIGH);
 
         break;
@@ -320,43 +323,43 @@ int src_mac_config(u64 mac, u8 chn){
     switch (chn)
     {
     case 0:
-        // Write lower part of dest_MAC_0
+        // Write lower part of src_MAC_0
         iowrite32((u32)mac, axi_pckt_gen + OFFSET_SRC_MAC_0_LOW);
 
-        //Writes upper part of dest_MAC_0
+        //Writes upper part of src_MAC_0
         prev_value = ioread32(axi_pckt_gen + OFFSET_SRC_MAC_0_HIGH);
         prev_value = (prev_value & 0xFFFF0000) | (u32)(mac >> 32);
         iowrite32(prev_value, axi_pckt_gen + OFFSET_SRC_MAC_0_HIGH);
         break;
     
     case 1:
-        // Write lower part of dest_MAC_0
+        // Write lower part of src_MAC_1
         iowrite32((u32)mac, axi_pckt_gen + OFFSET_SRC_MAC_1_LOW);
 
-        //Writes upper part of dest_MAC_0
+        //Writes upper part of src_MAC_1
         prev_value = ioread32(axi_pckt_gen + OFFSET_SRC_MAC_1_HIGH);
-        prev_value = (prev_value & 0x0000FFFF) | ((u32)(mac >> 16)& 0xFFFF0000); // these offsets are going to be magic numbers, im too lazy to set these as macros
+        prev_value = (prev_value & 0x0000FFFF) | ((u32)(mac >> 16)& 0xFFFF0000); 
         iowrite32(prev_value, axi_pckt_gen + OFFSET_SRC_MAC_1_HIGH);
         break;
 
     case 2:
-        // Write lower part of dest_MAC_0
+        // Write lower part of src_MAC_2
         iowrite32((u32)mac, axi_pckt_gen + OFFSET_SRC_MAC_2_LOW);
 
-        //Writes upper part of dest_MAC_0
+        //Writes upper part of src_MAC_2
         prev_value = ioread32(axi_pckt_gen + OFFSET_SRC_MAC_2_HIGH);
-        prev_value = (prev_value & 0xFFFF0000) | (u32)(mac >> 32); // these offsets are going to be magic numbers, im too lazy to set these as macros
+        prev_value = (prev_value & 0xFFFF0000) | (u32)(mac >> 32);
         iowrite32(prev_value, axi_pckt_gen + OFFSET_SRC_MAC_2_HIGH);
 
         break;
     
     case 3:
-        // Write lower part of dest_MAC_0
+        // Write lower part of src_MAC_3
         iowrite32((u32)mac, axi_pckt_gen + OFFSET_SRC_MAC_3_LOW);
 
-        //Writes upper part of dest_MAC_0
+        //Writes upper part of src_MAC_0
         prev_value = ioread32(axi_pckt_gen + OFFSET_SRC_MAC_3_HIGH);
-        prev_value = (prev_value & 0x0000FFFF) | ((u32)(mac >> 16)& 0xFFFF0000); // these offsets are going to be magic numbers, im too lazy to set these as macros
+        prev_value = (prev_value & 0x0000FFFF) | ((u32)(mac >> 16)& 0xFFFF0000);
         iowrite32(prev_value, axi_pckt_gen + OFFSET_SRC_MAC_3_HIGH);
 
         break;
@@ -372,6 +375,7 @@ int src_mac_config(u64 mac, u8 chn){
 int set_payload_pattern(u32 pattern, u8 chn){
     u8 offset = 0;
 
+    // Seleccionar la dirección a escribir en función del canal a configurar
     switch (chn)
     {
     case 0:
@@ -390,6 +394,8 @@ int set_payload_pattern(u32 pattern, u8 chn){
     default:
         break;
     }
+
+    // Realizar la escritura en el offset seleccionado
     iowrite32(pattern, axi_pckt_gen+ offset);
 	return 0;
 }
@@ -397,6 +403,7 @@ int set_payload_pattern(u32 pattern, u8 chn){
 int set_payload_length(u16 len, u8 chn){
     u32 prev_value = 0;
 
+    // Establecer valor mínimo y máximo
     if(len < MIN_PCKT_LEN) len = MIN_PCKT_LEN;
     if(len > MAX_PCKT_LEN) len = MAX_PCKT_LEN; 
 
@@ -489,7 +496,7 @@ int gen_mode_config(u8 mode, u32 param, u8 chn){
         break;
     
     case 3:
-        //Writes generation mode of channel 2
+        //Writes generation mode of channel 3
         mode_reg = (MASK_GEN_MODE_3 & mode_reg) | (u32)mode << 13;
         iowrite32(mode_reg, axi_pckt_gen + OFFSET_MODE_REG);
         offset = CHN_3_PARAM_OFF;
@@ -561,47 +568,46 @@ int set_pcktgen_config(config_pckt_gen param){
 MODULE_LICENSE("GPL");
 
 
+
+u32 stats_read(s8 chn, u8 packet_or_byte){
+    u8 offset = 0;
+     
+    switch(chn){
+        case 1:
+            offset = STATS_TX0;
+            break;
+            case 2:
+            offset = STATS_TX1;
+            break;
+            case 3:
+            offset = STATS_TX2;
+            break;
+            case 4:
+            offset = STATS_TX3;
+            break;
+            case -1:
+            offset = STATS_RX0;
+            break;
+        case -2:
+        offset = STATS_RX1;
+        break;
+        case -3:
+        offset = STATS_RX2;
+            break;
+            case -4:
+            offset = STATS_RX3;
+            break;
+        }
+
+        if(packet_or_byte)
+        offset+=0x04;
+    
+    return ioread32(axi_pckt_gen + offset);
+}
+
 module_init(init_driver);
 module_exit(exit_driver);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Antonio Morales");
 MODULE_DESCRIPTION("Ethernet Generator/Analyzer driver.");
-
-u32 stats_read(s8 chn, u8 packet_or_byte){
-    u8 offset = 0;
-
-    
-
-    switch(chn){
-        case 1:
-            offset = STATS_TX0;
-            break;
-        case 2:
-            offset = STATS_TX1;
-            break;
-        case 3:
-            offset = STATS_TX2;
-            break;
-        case 4:
-            offset = STATS_TX3;
-            break;
-        case -1:
-            offset = STATS_RX0;
-            break;
-        case -2:
-            offset = STATS_RX1;
-            break;
-        case -3:
-            offset = STATS_RX2;
-            break;
-        case -4:
-            offset = STATS_RX3;
-            break;
-    }
-
-    if(packet_or_byte)
-        offset+=0x04;
-
-    return ioread32(axi_pckt_gen + offset);
-}
